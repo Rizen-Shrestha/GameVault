@@ -1,1 +1,291 @@
-@charset "UTF-8";
+*, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            background-color: #0e0a1a;
+            background-image:
+                radial-gradient(ellipse at 30% 70%, rgba(80, 20, 120, 0.5) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(40, 10, 80, 0.4) 0%, transparent 55%);
+                /* This code for when you decide on  a background  image */
+                /* url('images/your-background.jpg');
+		    background-size: cover;
+		    background-position: center;
+		    background-repeat: no-repeat; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* HEADER */
+        .site-header {
+            width: 100%;
+            padding: 16px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            color: #cc66ff;
+            text-shadow: 0 0 12px rgba(180, 80, 255, 0.6);
+        }
+
+        /* PAGE WRAPPER */
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px 40px;
+            width: 100%;
+        }
+
+        /* CARD */
+        .register-card {
+            width: 100%;
+            max-width: 540px;
+            background: rgba(15, 8, 30, 0.85);
+            border: 1px solid rgba(150, 70, 220, 0.3);
+            border-radius: 6px;
+            padding: 36px 40px 38px;
+        }
+
+        /* TITLE */
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #cc66ff;
+            text-shadow: 0 0 20px rgba(180, 80, 255, 0.7);
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        /* FORM */
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        /* LABELS */
+        .form-group label {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            color: #a899bb;
+        }
+
+        /* INPUT WRAPPER */
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            background: rgba(8, 4, 18, 0.8);
+            border: 1px solid rgba(130, 60, 200, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: rgba(180, 90, 255, 0.85);
+            box-shadow: 0 0 8px rgba(160, 70, 255, 0.2);
+        }
+
+        /* ICON */
+        .input-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 9px;
+            color: #8844bb;
+            flex-shrink: 0;
+        }
+
+        .input-icon svg {
+            width: 15px;
+            height: 15px;
+            display: block;
+        }
+
+        /* TEXT INPUTS */
+        .input-wrapper input[type="text"],
+        .input-wrapper input[type="email"],
+        .input-wrapper input[type="password"],
+        .input-wrapper input[type="date"] {
+            flex: 1;
+            min-width: 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #ccbbee;
+            padding: 9px 8px 9px 0;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #4a3a62;
+        }
+
+        /* DATE INPUT */
+        .input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.4) sepia(1) saturate(2) hue-rotate(240deg);
+            cursor: pointer;
+            margin-right: 4px;
+        }
+
+        /* SELECT */
+        .input-wrapper select {
+            flex: 1;
+            min-width: 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #ccbbee;
+            padding: 9px 8px 9px 0;
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .input-wrapper select option {
+            background: #1a0f2e;
+            color: #ccbbee;
+        }
+
+        .select-arrow {
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            color: #8844bb;
+            pointer-events: none;
+            flex-shrink: 0;
+        }
+
+        .select-arrow svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* PASSWORD TOGGLE */
+        .toggle-password {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 9px;
+            color: #8844bb;
+            flex-shrink: 0;
+            transition: color 0.15s;
+        }
+
+        .toggle-password:hover { color: #cc66ff; }
+
+        .toggle-password svg {
+            width: 17px;
+            height: 17px;
+            display: block;
+        }
+
+        /* CHECKBOX */
+        .terms-row { margin-top: 0; }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .custom-checkbox {
+            width: 15px;
+            height: 15px;
+            min-width: 15px;
+            border: 1px solid rgba(130, 60, 200, 0.6);
+            border-radius: 2px;
+            background: rgba(8, 4, 18, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.15s, background 0.15s;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .custom-checkbox {
+            background: rgba(150, 60, 240, 0.25);
+            border-color: #cc66ff;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .custom-checkbox::after {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 7px;
+            border-right: 2px solid #cc66ff;
+            border-bottom: 2px solid #cc66ff;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        .terms-text {
+            font-size: 13px;
+            font-weight: 500;
+            color: #7a6a99;
+        }
+
+        /* SUBMIT */
+        .submit-btn {
+            width: 100%;
+            margin-top: 6px;
+            padding: 11px 0;
+            background: transparent;
+            border: 1px solid rgba(170, 80, 240, 0.7);
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #cc88ff;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: rgba(150, 60, 240, 0.15);
+            box-shadow: 0 0 16px rgba(160, 70, 255, 0.3);
+            color: #eeccff;
+        }
+
+        .submit-btn:active { transform: scale(0.99); }
