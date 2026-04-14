@@ -1,1 +1,203 @@
-@charset "UTF-8";
+/* ================== THEME ================== */
+:root {
+    --bg-main: #0A0A12;
+    --bg-sidebar: #0D0D17;
+    --bg-card: #121222;
+    --bg-card-2: #161629;
+
+    --purple: #A855F7;
+    --purple-light: #C084FC;
+    --purple-dark: #9333EA;
+
+    --green: #22C55E;
+
+    --text-main: #F9FAFB;
+    --text-secondary: #A1A1AA;
+    --text-muted: #6B7280;
+
+    --border-soft: rgba(255, 255, 255, 0.05);
+    --glow-purple: rgba(168, 85, 247, 0.15);
+}
+
+/* ================== GLOBAL ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* ================== SIDEBAR ================== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 230px;
+    height: 100vh;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-soft);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    color: var(--purple);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    padding: 12px;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.menu li.active {
+    background: var(--glow-purple);
+    color: var(--purple-light);
+}
+
+.menu li:hover {
+    background: rgba(168, 85, 247, 0.08);
+    color: var(--purple-light);
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+}
+
+/* ================== MAIN ================== */
+.main {
+    margin-left: 250px;
+    padding: 25px;
+}
+
+/* ================== HERO ================== */
+.hero {
+    height: 300px;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(
+        rgba(10,10,18,0.6),
+        rgba(10,10,18,0.9)
+    ),
+    url("https://via.placeholder.com/900x300") center/cover no-repeat;
+}
+
+.hero h1 {
+    font-size: 42px;
+}
+
+.hero span {
+    color: var(--purple-light);
+}
+
+.hero p {
+    margin: 10px 0;
+    color: var(--text-secondary);
+}
+
+.buttons button {
+    margin-right: 10px;
+}
+
+/* ================== BUTTONS ================== */
+.primary {
+    background: linear-gradient(135deg, #A855F7, #9333EA);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    cursor: pointer;
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    padding: 10px 20px;
+    color: white;
+    border-radius: 8px;
+}
+
+/* ================== SECTION ================== */
+.section {
+    margin-top: 30px;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+}
+
+/* ================== CARDS ================== */
+.cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    padding: 15px;
+    border-radius: 12px;
+    width: 200px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.card button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: var(--purple);
+    color: white;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* ================== CTA ================== */
+.cta {
+    margin-top: 40px;
+    padding: 40px;
+    background: var(--bg-card-2);
+    border: 1px solid var(--border-soft);
+    text-align: center;
+    border-radius: 16px;
+}
+
+.cta p {
+    margin: 10px 0 20px;
+    color: var(--text-secondary);
+}
