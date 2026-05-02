@@ -3,8 +3,10 @@ package com.gamevault.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 
+import com.gamevault.model.UserModel;
 import com.gamevault.utils.DBconfig;
 
 public class UserDAO {
@@ -43,5 +45,29 @@ public class UserDAO {
 	     pst.executeUpdate();
 	     pst.close();
 	     con.close();
+	}
+	
+	public UserModel getUserByUsername(String username) throws Exception {
+		UserModel user = null;
+		Connection con = DBconfig.getConnection();
+		
+		String sql = "SELECT * FROM Users WHERE username = ?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		pst.setString(1,username);
+		
+		ResultSet rs = pst.executeQuery();
+		
+		if(rs.next()) {
+			user = new UserModel();
+			user.setUserId(rs.getInt("userId"));
+			user.setUsername(rs.getString("username"));
+			user.setPassword(rs.getString("password"));
+			user.setFirstName(rs.getString("firstName"));
+			user.setLastName(rs.getString("lastName"));
+			user.setRole(rs.getString("role"));
+		}
+		
+		
+		return user;
 	}
 }
