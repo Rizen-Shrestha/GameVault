@@ -18,8 +18,11 @@ public class UserDAO {
 		Date currentDate = new Date(milliseconds);
 		
 		Connection con = DBconfig.getConnection();
+		if (con == null) {
+		    throw new Exception("Database connection failed! Check DBconfig settings.");
+		}
 		
-		String sql = "INSERT INTO students (firstName, lastName, username, email, gender, dob, password, role, accountStatus, creationDate) "
+		String sql = "INSERT INTO Users (firstName, lastName, username, email, gender, dob, password, role, accountStatus, creationDate) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	     PreparedStatement pst = con.prepareStatement(sql);
 	     

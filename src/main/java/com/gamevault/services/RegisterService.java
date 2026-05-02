@@ -9,8 +9,8 @@ public class RegisterService {
     public void addUser(String firstName, String lastName, String username, String email,
                            String gender, String dob, String password) throws Exception {
     	// For hashing password
-    	password=PasswordUtil.getHashPassword(password); 
+    	password = PasswordUtil.getHashPassword(password); 
     	
-        dao.insertUser(firstName, lastName, username, dob, gender, email, password);
+        dao.insertUser(firstName, lastName, username, email, gender, dob, password);
     }
 }

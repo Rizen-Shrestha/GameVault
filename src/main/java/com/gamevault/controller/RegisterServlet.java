@@ -27,14 +27,14 @@ public class RegisterServlet extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String username = request.getParameter("username");
-            String dob = request.getParameter("email");
+            String email = request.getParameter("email");
             String gender = request.getParameter("gender");
-            String email = request.getParameter("dob");
+            String dob = request.getParameter("dob");
             String password = request.getParameter("password");
 
             // Call service to add User
             RegisterService service = new RegisterService();
-            service.addUser(firstName, lastName, username, email, gender, dob, email, password);
+            service.addUser(firstName, lastName, username, email, gender, dob, password);
             
             // Redirect to login page after successful registration 
             response.sendRedirect(request.getContextPath() + "/login");
