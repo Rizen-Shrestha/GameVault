@@ -6,10 +6,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.gamevault.dao.UserDAO;
 import com.gamevault.model.UserModel;
 import com.gamevault.services.LoginService;
+import com.gamevault.utils.CookieUtil;
+import com.gamevault.utils.SessionUtil;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,14 +48,20 @@ public class LoginServlet extends HttpServlet {
 		String status = service.authenticate(username, password);
 		
 		if("Success".equals(status)) {
-//			UserDAO user = new UserDAO();
-//			try {
-//				UserModel userData = user.getUserByUsername(username);
-//				
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
+			UserDAO user = new UserDAO();
+			try {
+				UserModel userData = user.getUserByUsername(username);
+				SessionUtil.setAttribute(request, "user", userData, 3600);
+				
+				LocalDateTime now = LocalDateTime.now();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss");
+				String loginTime = now.format(formatter);
+				
+				CookieUtil.addCookie(response, "last_login", loginTime, 3600);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			response.sendRedirect(request.getContextPath() + "/home");
 		}
 		else {
