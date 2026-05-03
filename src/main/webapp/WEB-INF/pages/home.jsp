@@ -359,21 +359,18 @@
 		</section>
 	
 	    <!-- Developer Contact/CTA Section -->
-		<section class="dev-cta-section">
-		    <div class="cta-overlay">
-		        <div class="cta-content">
-		            <h1 class="cta-title">
-					    Bring Your <span class="text-purple">World</span><br>
-					    to Our <span class="text-purple">Players</span>!
-					</h1>
-		            <p class="cta-description">
-		                Join a curated ecosystem designed to put great games in front of the right eyes. 
-		                Submit your project today and start building your community.
-		            </p>
-		            <button class="btn-submit-game">Submit Your Game!</button>
-		        </div>
-		    </div>
-		</section>
+	<section class="dev-cta-section">
+	    <div class="cta-overlay">
+	        <div class="cta-content">
+	            <h1 class="cta-title">Bring Your World<br>to Our Players!</h1>
+	            <p class="cta-description">
+	                Join a curated ecosystem designed to put great games in front of the right eyes. 
+	                Submit your project today and start building your community.
+	            </p>
+	            <button class="btn-submit-game">Submit Your Game!</button>
+	        </div>
+	    </div>
+	</section>
 	
 	    <jsp:include page="../components/footer.jsp" />
 	</main>
