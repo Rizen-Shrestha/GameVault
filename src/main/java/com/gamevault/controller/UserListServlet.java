@@ -31,6 +31,7 @@ public class UserListServlet extends HttpServlet {
 			List<UserModel> users = service.fetchAll();
 			
 			request.setAttribute("users", users);
+			request.setAttribute("activePage", "users");
 			
 			request.getRequestDispatcher("/WEB-INF/pages/userList.jsp").forward(request, response);
 

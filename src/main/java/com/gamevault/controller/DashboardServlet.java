@@ -19,6 +19,7 @@ public class DashboardServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("activePage", "home");
 		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp").forward(request, response);
 
 	}
