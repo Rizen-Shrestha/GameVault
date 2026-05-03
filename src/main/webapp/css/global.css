@@ -1,0 +1,36 @@
+:root {
+    --bg-main: #13131a;
+    --bg-sidebar: #181820;
+    --neon-purple: #d982ff;
+    --neon-glow: rgba(217, 130, 255, 0.4);
+    --neon-green: #4ade80;
+    --text-gray: #94a3b8;
+    --text-main: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-green) transparent;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.highlight { color: var(--neon-purple); }
+.green-glow { color: var(--neon-green); text-shadow: 0 0 15px rgba(74, 222, 128, 0.4); }
+.purple-glow { color: var(--neon-purple); text-shadow: 0 0 15px rgba(217, 130, 255, 0.4); }

@@ -17,7 +17,7 @@ import com.gamevault.utils.SessionUtil;
 /**
  * Redirects authenticated users away from landing/auth pages to the dashboard.
  */
-@WebFilter(urlPatterns = {"/login", "/register", "/home", ""})
+@WebFilter(urlPatterns = {"/login", "/register",""})
 public class GuestFilter extends HttpFilter {
     
     private static final long serialVersionUID = 1L;
