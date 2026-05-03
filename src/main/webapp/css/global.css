@@ -1,36 +1,42 @@
+/* 1. VARIABLES (The "DNA" of your site) */
 :root {
+    /* Backgrounds */
     --bg-main: #13131a;
     --bg-sidebar: #181820;
+    --bg-card: #1c1c24;
+    
+    /* Brand Colors */
     --neon-purple: #d982ff;
     --neon-glow: rgba(217, 130, 255, 0.4);
     --neon-green: #4ade80;
-    --text-gray: #94a3b8;
+    
+    /* Text Colors */
     --text-main: #ffffff;
+    --text-gray: #94a3b8;
 }
 
+/* 2. RESET (Ensures a consistent starting point) */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Prevents padding from breaking width */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    scrollbar-width: thin;
-    scrollbar-color: var(--neon-green) transparent;
 }
 
 body {
-    background: var(--bg-main);
+    background-color: var(--bg-main);
     color: var(--text-main);
-    display: flex;
     min-height: 100vh;
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Makes text look crisper */
 }
+
+/* 3. BASIC UTILITIES (Color helpers) */
+.highlight { color: var(--neon-purple); }
+.green-glow { color: var(--neon-green); text-shadow: 0 0 15px rgba(74, 222, 128, 0.4); }
+.purple-glow { color: var(--neon-purple); text-shadow: 0 0 15px var(--neon-glow); }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.3s;
 }
-
-.highlight { color: var(--neon-purple); }
-.green-glow { color: var(--neon-green); text-shadow: 0 0 15px rgba(74, 222, 128, 0.4); }
-.purple-glow { color: var(--neon-purple); text-shadow: 0 0 15px rgba(217, 130, 255, 0.4); }

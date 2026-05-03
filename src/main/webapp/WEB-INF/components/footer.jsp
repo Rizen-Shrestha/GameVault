@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-pageEncoding="UTF-8"%>
-<footer class="footer">
+<footer class="site-footer">
     <div class="footer-left">
-        <div class="footer-logo">GAMEVAULT</div>
-        <p class="copyright">© 2026 GAMEVAULT. ALL RIGHTS RESERVED.</p>
+        <h2 class="footer-logo purple-glow">GAMEVAULT</h2>
+        <p class="copyright">&copy; 2026 GAMEVAULT. ALL RIGHTS RESERVED.</p>
     </div>
-    <div class="footer-links">
-        <a href="#">SUPPORT</a>
-        <a href="#">PRIVACY</a>
-        <a href="#">TERMS</a>
+    
+    <div class="footer-right">
+        <nav class="footer-nav">
+            <a href="support.jsp">SUPPORT</a>
+            <a href="privacy.jsp">PRIVACY</a>
+            <a href="terms.jsp">TERMS</a>
+        </nav>
     </div>
 </footer>
