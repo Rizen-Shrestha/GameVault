@@ -1,0 +1,353 @@
+/* 1. VARIABLE DEFINITIONS - Essential for the Text Colors */
+:root {
+    /* Backgrounds */
+    --bg-dark: #0d0a1a;
+    --bg-main: #100c1e;
+    --bg-card: #150f2d;
+    --bg-row-hover: rgba(140, 60, 200, 0.05);
+    
+    /* Branding Colors */
+    --neon-purple: #cc66ff;
+    --neon-purple-dim: rgba(204, 102, 255, 0.4);
+    --border-purple: rgba(120, 60, 180, 0.2);
+    
+    /* Text Colors - Matches your "Intended" image */
+    --text-bright: #ffffff;      /* Pure white for Names */
+    --text-mid: #c8b8e8;         /* Lilac for Email/DOB */
+    --text-gray: #5a4a78;        /* Muted purple for Table Headers/Handles */
+    
+    /* Status & Role Colors */
+    --active-green: #39ff8a;
+    --inactive-red: #ff3c50;
+    --admin-color: #b450ff;
+    --user-color: #508cff;
+    
+    /* Fonts - Matching the "Orbitron" and "Rajdhani" look */
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+}
+
+/* 2. CORE LAYOUT & ALIGNMENT */
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-mid);
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* sidebar is 130px wide in your JSP */
+.sidebar {
+    width: 130px;
+    height: 100vh;
+    background: var(--bg-dark);
+    border-right: 1px solid var(--border-purple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.main-wrapper {
+    margin-left: 130px; /* Must match sidebar width */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 40px;
+    background-color: var(--bg-main);
+}
+
+.content-area {
+    flex: 1;
+    padding-top: 36px;
+}
+
+/* 3. TOPBAR & PAGE TITLE */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-bright);
+    letter-spacing: 3px;
+}
+
+.title-accent {
+    color: var(--neon-purple);
+    text-shadow: 0 0 15px rgba(204, 102, 255, 0.4);
+}
+
+/* 4. USER TABLE STYLING */
+.table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-purple);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th {
+    background: rgba(30, 12, 50, 0.6);
+    color: var(--text-gray); /* Muted purple headers */
+    font-family: var(--font-display);
+    font-size: 10px;
+    padding: 18px 24px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-purple);
+}
+
+.user-row {
+    border-bottom: 1px solid rgba(120, 60, 180, 0.1);
+    transition: background 0.2s;
+}
+
+.user-row:hover { 
+    background: var(--bg-row-hover); 
+}
+
+.user-row td {
+    padding: 16px 24px;
+    font-size: 14px;
+    color: var(--text-mid); /* Lilac for general data */
+}
+
+/* 5. USER DETAILS COLUMN */
+.user-info { display: flex; align-items: center; gap: 14px; }
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    border: 1px solid var(--border-purple);
+    background: #1a1535;
+    overflow: hidden;
+}
+
+.user-name {
+    display: block;
+    color: var(--text-bright); /* High contrast white */
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.user-handle {
+    display: block;
+    color: var(--text-gray); /* Muted handle */
+    font-size: 11px;
+}
+
+/* 6. STATUS & ROLE BADGES */
+.role-badge {
+    font-family: var(--font-display);
+    font-size: 9px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.role-admin { color: var(--admin-color); background: rgba(180, 80, 255, 0.1); border: 1px solid rgba(180, 80, 255, 0.3); }
+.role-user { color: var(--user-color); background: rgba(80, 140, 255, 0.1); border: 1px solid rgba(80, 140, 255, 0.3); }
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.status-active { color: var(--active-green); }
+.status-active .status-dot { background: var(--active-green); box-shadow: 0 0 8px var(--active-green); }
+
+.status-inactive { color: var(--inactive-red); }
+.status-inactive .status-dot { background: var(--inactive-red); }
+
+/* 7. TOGGLE SWITCH */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #2a2440;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px; width: 14px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider { background-color: var(--active-green); }
+input:checked + .toggle-slider:before { transform: translateX(16px); }
+
+/* 8. SEARCH BOX FIX */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(20, 12, 36, 0.8);
+    border: 1px solid var(--border-purple);
+    border-radius: 6px;
+    padding: 0 16px;
+    height: 40px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: var(--text-mid);
+    font-family: var(--font-display);
+    font-size: 10px;
+    outline: none;
+    padding-left: 10px;
+}
+.sidebar {
+    width: 130px;
+    min-height: 100vh;
+    background: #0d0a1a;
+    border-right: 1px solid rgba(120, 60, 180, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    margin-bottom: 28px;
+}
+
+.logo-box {
+    width: 52px;
+    height: 52px;
+    background: rgba(140, 60, 200, 0.2);
+    border: 1px solid rgba(160, 80, 220, 0.35);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-fallback {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #cc66ff;
+    position: absolute;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 8px;
+    color: #5a4a78;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.2s, background 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-item svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-item:hover {
+    color: #aa77dd;
+    background: rgba(140, 60, 200, 0.1);
+}
+
+.nav-item.active {
+    color: #cc66ff;
+    border-left-color: #cc66ff;
+    background: rgba(160, 70, 220, 0.1);
+}
+
+.sidebar-bottom {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(120, 60, 180, 0.15);
+}
+
+.logout-btn {
+    color: #6b3a3a;
+}
+
+.logout-btn:hover {
+    color: #ff6680;
+    background: rgba(255, 60, 80, 0.08);
+}
+
+.logout-btn svg {
+    transition: transform 0.2s;
+}
+
+.logout-btn:hover svg {
+    transform: translateX(3px);
+}
+

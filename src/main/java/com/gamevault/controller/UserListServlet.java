@@ -6,6 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.gamevault.model.UserModel;
+import com.gamevault.services.UserListService;
 
 /**
  * Servlet implementation class UserListServlet
@@ -19,21 +23,24 @@ public class UserListServlet extends HttpServlet {
      */
     public UserListServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/pages/userList.jsp").forward(request, response);
+		try {
+			UserListService service = new UserListService();
+			List<UserModel> users = service.fetchAll();
+			
+			request.setAttribute("users", users);
+			
+			request.getRequestDispatcher("/WEB-INF/pages/userList.jsp").forward(request, response);
+
+		} catch (Exception e) {
+			throw new ServletException("Database error", e);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+
 	}
 
 }
