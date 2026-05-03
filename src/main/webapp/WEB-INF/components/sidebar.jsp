@@ -1,28 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <aside class="sidebar">
-    <div class="top-group">
-        <div class="logo">GV</div>
-        <nav class="menu">
-            <a href="${pageContext.request.contextPath}/home.jsp" class="menu-item active">
-                <span class="icon">⌂</span> HOME
-            </a>
-            <a href="#" class="menu-item">
-                <span class="icon">🎮</span> LIBRARY
-            </a>
-            <a href="#" class="menu-item">
-                <span class="icon">🛒</span> EXPLORE
-            </a>
-        </nav>
+    <!-- Top Logo -->
+    <div class="sidebar-logo">
+        <a href="home.jsp" class="purple-glow">GV</a>
     </div>
 
-    <div class="bottom-group">
-        <nav class="menu secondary-menu">
-            <a href="#" class="menu-item"><span class="icon">⚙</span> SETTINGS</a>
-            <a href="#" class="menu-item"><span class="icon">?</span> SUPPORT</a>
-        </nav>
+    <!-- Main Navigation -->
+    <nav class="sidebar-nav">
+        <ul>
+            <li class="active">
+                <a href="home.jsp">HOME</a>
+            </li>
+            <li>
+                <a href="library.jsp">LIBRARY</a>
+            </li>
+            <li>
+                <a href="explore.jsp">EXPLORE</a>
+            </li>
+            <li>
+                <a href="about.jsp">ABOUT US</a>
+            </li>
+            <li>
+                <a href="contact.jsp">CONTACT</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Bottom Group -->
+    <div class="sidebar-bottom">
+        <div class="secondary-nav">
+            <a href="settings.jsp">SETTINGS</a>
+            <a href="support.jsp">SUPPORT</a>
+        </div>
+        
         <div class="user-profile">
-            <img src="${pageContext.request.contextPath}/img.png" alt="User">
+            <div class="pfp-wrapper">
+                <!-- Ensure this image exists in your webapp/images folder -->
+                <img src="${pageContext.request.contextPath}/images/user_pfp.png" alt="Profile">
+            </div>
             <span class="username">PLAYER_123</span>
         </div>
     </div>
