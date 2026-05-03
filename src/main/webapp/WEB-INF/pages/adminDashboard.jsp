@@ -6,14 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameVault - Dashboard</title>
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/footer.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/sidebar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/adminDashboard.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/css/global.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
+		<aside class="sidebar">
     <div class="sidebar-logo">
         <div class="logo-box">
             <img src="images/logo.png" alt="GameVault Logo" onerror="this.style.display='none'">
@@ -44,10 +48,9 @@
     </nav>
 </aside>
 
-<!-- MAIN WRAPPER -->
+
 <div class="main-wrapper">
 
-    <!-- TOP BAR -->
     <header class="topbar">
         <div class="topbar-brand">
             <span class="topbar-logo">GAMEVAULT</span>
@@ -66,19 +69,15 @@
         </div>
     </header>
 
-    <!-- CONTENT -->
     <main class="content">
 
-        <!-- Page heading -->
         <div class="page-heading">
             <span class="page-label">ADMIN</span>
             <h1 class="page-title">DASHBOARD</h1>
         </div>
 
-        <!-- Top sections: Manage Users + Manage Games -->
         <div class="top-sections">
 
-            <!-- Manage Users -->
             <section class="card manage-users">
                 <div class="card-header">
                     <div class="card-title-row">
@@ -105,7 +104,6 @@
                 <button class="view-all-btn">VIEW ALL USERS</button>
             </section>
 
-            <!-- Manage Games -->
             <section class="card manage-games">
                 <div class="card-header">
                     <div class="card-title-row">
@@ -132,7 +130,6 @@
 
         </div>
 
-        <!-- System Analytics -->
         <section class="card analytics-card">
             <div class="card-header">
                 <div class="card-title-row">
@@ -182,10 +179,8 @@
             </div>
         </section>
 
-        <!-- Bottom: Messages + Game Requests -->
         <div class="bottom-sections">
 
-            <!-- View Messages -->
             <section class="card messages-card">
                 <div class="card-header">
                     <div class="card-title-row">
@@ -218,7 +213,6 @@
                 </div>
             </section>
 
-            <!-- Game Requests -->
             <section class="card requests-card">
                 <div class="card-header">
                     <div class="card-title-row">
@@ -266,14 +260,13 @@
 
         </div>
 
-        <!-- Last Update -->
-        <div class="last-update">
-            <span class="last-update-label">LAST UPDATE</span>
-            <span class="last-update-time" id="lastUpdateTime">03:44:12 MSL</span>
-        </div>
 
     </main>
+    		<jsp:include page="../components/footer.jsp" />
+    
 </div>
+
+
 
 <script>
     // Line chart
@@ -344,16 +337,7 @@
         }
     });
 
-    // Live clock
-    function updateTime() {
-        const now = new Date();
-        const h = String(now.getHours()).padStart(2,'0');
-        const m = String(now.getMinutes()).padStart(2,'0');
-        const s = String(now.getSeconds()).padStart(2,'0');
-        document.getElementById('lastUpdateTime').textContent = h + ':' + m + ':' + s + ' MSL';
-    }
-    updateTime();
-    setInterval(updateTime, 1000);
+
 </script>
 
 </body>
