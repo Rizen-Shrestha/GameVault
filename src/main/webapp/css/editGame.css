@@ -1,0 +1,94 @@
+.content-area {
+    flex: 1;
+    padding: 40px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-card {
+    width: 500px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-purple);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.form-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--text-bright);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-family: var(--font-display);
+    color: var(--text-gray);
+    letter-spacing: 1px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    background: rgba(20, 12, 36, 0.8);
+    border: 1px solid var(--border-purple);
+    border-radius: 6px;
+    color: var(--text-mid);
+    font-size: 13px;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--neon-purple);
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+    background: var(--neon-purple);
+    color: black;
+    border: none;
+}
+
+.save-btn:hover {
+    background: #c084ff;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background: transparent;
+    border: 1px solid var(--neon-red);
+    color: var(--neon-red);
+}
+
+.delete-btn:hover {
+    background: var(--neon-red);
+    color: black;
+}
