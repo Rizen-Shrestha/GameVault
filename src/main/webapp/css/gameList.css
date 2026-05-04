@@ -88,3 +88,82 @@
     text-align: center;
     color: var(--text-gray);
 }
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(20, 12, 36, 0.8);
+    border: 1px solid var(--border-purple);
+    border-radius: 6px;
+    padding: 0 16px;
+    height: 40px;
+    min-width: 220px;
+    transition: border-color 0.2s;
+}
+
+.search-box:focus-within {
+    border-color: var(--neon-purple-dim);
+}
+
+.search-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-gray);
+    flex-shrink: 0;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-mid);
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.search-input::placeholder {
+    color: var(--text-gray);
+}
+
+.add-game-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 18px;
+    background: var(--neon-purple);
+    color: #000;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.add-game-btn:hover {
+    background: #c084ff;
+}
+
+.add-game-btn svg {
+    width: 14px;
+    height: 14px;
+}
