@@ -1,0 +1,90 @@
+.content-area {
+    flex: 1;
+    padding: 36px 40px 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-bright);
+    letter-spacing: 3px;
+}
+
+.title-accent {
+    color: var(--neon-purple);
+}
+
+.table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-purple);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.game-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.game-table th {
+    background: rgba(30, 12, 50, 0.6);
+    color: var(--text-gray);
+    font-family: var(--font-display);
+    font-size: 10px;
+    padding: 18px 24px;
+    text-align: left;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid var(--border-purple);
+}
+
+.game-row {
+    border-bottom: 1px solid rgba(120, 60, 180, 0.1);
+    transition: background 0.2s;
+}
+
+.game-row:hover {
+    background: rgba(140, 60, 200, 0.05);
+}
+
+.game-row td {
+    padding: 16px 24px;
+    font-size: 14px;
+    color: var(--text-mid);
+}
+
+.game-title {
+    font-weight: 700;
+    color: var(--text-bright);
+}
+
+/* EDIT BUTTON */
+.edit-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 10px;
+    font-family: var(--font-display);
+    text-decoration: none;
+    color: var(--neon-purple);
+    border: 1px solid var(--neon-purple);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.edit-btn:hover {
+    background: var(--neon-purple);
+    color: black;
+}
+
+.empty-state {
+    padding: 60px;
+    text-align: center;
+    color: var(--text-gray);
+}

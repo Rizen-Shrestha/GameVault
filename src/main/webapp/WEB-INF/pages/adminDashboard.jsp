@@ -106,7 +106,9 @@
                         <div class="game-img"></div>
                         <span class="game-label">GAME ONE</span>
                     </div>
+					<a href="${pageContext.request.contextPath}/games">
                     <button class="view-all-btn games-view-btn">VIEW ALL GAMES</button>
+                    </a>
                 </div>
             </section>
 
