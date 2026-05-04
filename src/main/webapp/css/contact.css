@@ -121,7 +121,7 @@ select option {
 .btn-primary:hover { filter: brightness(1.2); }
 .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); }
 
-\.main footer {
+.main footer {
     width: 100%;
     margin-top: auto;
 }
