@@ -1,0 +1,159 @@
+/* ============================================
+   ADMINSIDEBAR.CSS
+   Owns all admin variables + shared body layout
+   ============================================ */
+
+:root {
+    --bg-main:         #100c1e;
+    --bg-sidebar:      #0d0a1a;
+    --bg-card:         #130e24;
+    --neon-purple:     #cc66ff;
+    --neon-purple-dim: rgba(204, 102, 255, 0.4);
+    --border-purple:   rgba(120, 60, 180, 0.2);
+    --text-bright:     #e8ddf5;
+    --text-mid:        #c8b8e8;
+    --text-gray:       #5a4a78;
+    --neon-green:      #39ff8a;
+    --neon-red:        #ff3c50;
+    --admin-color:     #b450ff;
+    --user-color:      #508cff;
+    --font-display:    'Orbitron', sans-serif;
+    --font-body:       'Rajdhani', sans-serif;
+}
+
+/* Shared body for ALL admin pages */
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main) !important;
+    color: var(--text-mid);
+    display: flex !important;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Shared wrapper for ALL admin pages */
+.main-wrapper {
+    margin-left: 130px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ---- SIDEBAR ---- */
+.sidebar {
+    width: 130px;
+    min-height: 100vh;
+    background: var(--bg-sidebar);
+    border-right: 1px solid rgba(120, 60, 180, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    margin-bottom: 28px;
+}
+
+.logo-box {
+    width: 52px;
+    height: 52px;
+    background: rgba(140, 60, 200, 0.2);
+    border: 1px solid rgba(160, 80, 220, 0.35);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-fallback {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--neon-purple);
+    position: absolute;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 8px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.2s, background 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.nav-item svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-item:hover {
+    color: #aa77dd;
+    background: rgba(140, 60, 200, 0.1);
+}
+
+.nav-item.active {
+    color: var(--neon-purple);
+    border-left-color: var(--neon-purple);
+    background: rgba(160, 70, 220, 0.1);
+}
+
+.sidebar-bottom {
+    width: 100%;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(120, 60, 180, 0.15);
+}
+
+.logout-btn {
+    color: #6b3a3a;
+}
+
+.logout-btn:hover {
+    color: #ff6680;
+    background: rgba(255, 60, 80, 0.08);
+}
+
+.logout-btn svg {
+    transition: transform 0.2s;
+}
+
+.logout-btn:hover svg {
+    transform: translateX(3px);
+}
