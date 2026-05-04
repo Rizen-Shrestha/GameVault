@@ -1,0 +1,145 @@
+.main {
+    margin-left: 240px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    background-color: #0b1119;
+}
+
+.profile-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.profile-card {
+    background: #151c26;
+    padding: 40px;
+    border-radius: 12px;
+    border-top: 4px solid var(--neon-purple);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.profile-title {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Avatar Styles */
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #2a3441;
+    background: #1c2532;
+}
+
+.edit-icon-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--neon-purple);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #151c26;
+}
+
+.edit-icon-btn img { width: 14px; filter: brightness(0) invert(1); }
+
+.change-photo-text {
+    background: none;
+    border: none;
+    color: #a370f7;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.profile-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+input, .profile-select {
+    background: #1c2532;
+    border: 1px solid #2a3441;
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #6d28d9;
+}
+
+.btn-save {
+    background: #6d28d9;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-save:hover {
+    background: #7c3aed;
+}
+
+.main footer {
+    width: 100%;
+    margin-top: auto; 
+    align-self: stretch;
+}

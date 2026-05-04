@@ -19,7 +19,7 @@ import com.gamevault.utils.SessionUtil;
  * Servlet Filter implementation class AuthenticationFilter
  */
 // /dashboard, /students and /logout need login before proceeding, so we used these url for filtering
-@WebFilter(urlPatterns = {"/dashboard","/home","/users", "/library", "/explore", "/submit", "/gameDescription", "/aboutus", "/contact"})
+@WebFilter(urlPatterns = {"/dashboard","/home","/users", "/library", "/explore", "/submit", "/gameDescription", "/profile", "/aboutus", "/contact"})
 public class AuthenticationFilter extends HttpFilter implements Filter {
        
     private static final long serialVersionUID = 1L;
