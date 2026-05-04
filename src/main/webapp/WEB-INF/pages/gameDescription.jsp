@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Game Details | Cyberpunk 2077</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/details.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gameDescription.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sidebar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
@@ -17,14 +17,26 @@
     <main class="main">
         <div class="details-container">
             
-            <!-- Left Side: Cinematic & Info -->
             <section class="details-left">
                 <div class="hero-image-wrapper">
-                    <img src="images/hero-cp2077.jpg" alt="Game Banner">
+                    <img id="mainHeroImage" src="images/hero-cp2077-1.jpg" alt="Game Banner">
+                </div>
+
+                <div class="image-nav">
+                    <img class="thumb active" src="${pageContext.request.contextPath}/images/default_placeholder.png" onclick="switchImage(this)" alt="Thumb 1">
+                    <img class="thumb" src="${pageContext.request.contextPath}/images/default_placeholder.png" onclick="switchImage(this)" alt="Thumb 2">
+                    <img class="thumb" src="${pageContext.request.contextPath}/images/default_placeholder.png" onclick="switchImage(this)" alt="Thumb 3">
                 </div>
                 
                 <div class="description-box">
                     <h1 class="game-main-title">Cyberpunk 2077</h1>
+                    
+                    <div class="genre-tags">
+                        <span class="tag">Open World</span>
+                        <span class="tag">RPG</span>
+                        <span class="tag">Action</span>
+                    </div>
+
                     <p class="game-long-desc">
                         Cyberpunk 2077 is an open-world, action-adventure story set in Night City, 
                         a megalopolis obsessed with power, glamour and body modification. You play 
@@ -32,19 +44,8 @@
                         key to immortality.
                     </p>
                 </div>
-
-                <div class="specs-section">
-                    <h3 class="detail-sub-title">Specifications</h3>
-                    <div class="specs-grid">
-                        <div class="spec-item"><span>OS</span><strong>Windows 10 64-bit</strong></div>
-                        <div class="spec-item"><span>Processor</span><strong>Intel Core i7-6700</strong></div>
-                        <div class="spec-item"><span>Memory</span><strong>16 GB RAM</strong></div>
-                        <div class="spec-item"><span>Graphics</span><strong>GTX 1060 6GB</strong></div>
-                    </div>
-                </div>
             </section>
 
-            <!-- Right Side: Buy Card -->
             <aside class="details-right">
                 <div class="purchase-card">
                     <div class="game-logo-small">
@@ -67,16 +68,8 @@
                             <span class="white-text">CD PROJEKT RED</span>
                         </div>
                         <div class="meta-row">
-                            <span>Publisher</span>
-                            <span class="white-text">CD PROJEKT RED</span>
-                        </div>
-                        <div class="meta-row">
                             <span>Release Date</span>
                             <span class="white-text">Dec 10, 2020</span>
-                        </div>
-                        <div class="meta-row">
-                            <span>Genre</span>
-                            <span class="neon-text">Open World, RPG</span>
                         </div>
                     </div>
                 </div>
@@ -85,6 +78,16 @@
         </div>
         <jsp:include page="../components/footer.jsp" />
     </main>
+
+    <script>
+        function switchImage(element) {
+            document.getElementById('mainHeroImage').src = element.src;
+            
+            const thumbnails = document.querySelectorAll('.thumb');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>

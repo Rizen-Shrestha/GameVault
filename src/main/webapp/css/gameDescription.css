@@ -11,10 +11,9 @@
     margin-bottom: 80px;
 }
 
-/* --- Left Side --- */
 .hero-image-wrapper {
     width: 100%;
-    aspect-ratio: 16 / 7;
+	height: 600px;
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 30px;
@@ -41,34 +40,11 @@
     margin-bottom: 40px;
 }
 
-.specs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    background: #1c1c24;
-    padding: 30px;
-    border-radius: 15px;
-}
-
-.spec-item {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.spec-item span {
-    color: #8b8b9e;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
-/* --- Right Side (Purchase Area) --- */
 .purchase-card {
     background: #1c1c24;
     padding: 30px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    position: sticky;
     top: 40px;
 }
 
@@ -142,3 +118,52 @@
 
 .white-text { color: #fff; }
 .neon-text { color: var(--neon-purple); }
+
+.image-nav {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.thumb {
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumb:hover {
+    opacity: 0.8;
+}
+
+.thumb.active {
+    opacity: 1;
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple-alpha);
+}
+
+.genre-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--neon-purple);
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.game-long-desc {
+    margin-top: 10px;
+}
