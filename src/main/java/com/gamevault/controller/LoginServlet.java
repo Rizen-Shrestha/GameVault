@@ -59,10 +59,18 @@ public class LoginServlet extends HttpServlet {
 				
 				CookieUtil.addCookie(response, "last_login", loginTime, 3600);
 				
+				if("ADMIN".equalsIgnoreCase(userData.getRole())) {
+					response.sendRedirect(request.getContextPath() + "/dashboard");
+				}
+				else {
+					response.sendRedirect(request.getContextPath() + "/home");
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
+				response.sendRedirect(request.getContextPath() + "/login");
 			}
-			response.sendRedirect(request.getContextPath() + "/home");
+			
 		}
 		else {
 			request.setAttribute("error", status);
