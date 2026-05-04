@@ -21,7 +21,6 @@
                 <p class="tagline">Find your next favorite adventure.</p>
             </div>
             
-            <!-- Added Search Bar -->
             <div class="explore-search-container">
                 <div class="search-bar">
                     <input type="text" placeholder="Search for games, publishers, or tags...">
@@ -30,7 +29,6 @@
             </div>
         </section>
 
-        <!-- Trending Section -->
         <section class="trending-area">
             <h2 class="sub-title">Trending Now</h2>
             <div class="trending-grid">
@@ -92,6 +90,39 @@
                 </div>            
             
             	<div class="explore-card">
+                    <div class="card-img">
+                        <img src="images/game9.jpg" alt="Game">
+                        <div class="price-tag">$59.99</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Final Fantasy VII Rebirth</h3>
+                        <span class="genre-label">Action RPG</span>
+                    </div>
+                </div>
+                
+                <div class="explore-card">
+                    <div class="card-img">
+                        <img src="images/game9.jpg" alt="Game">
+                        <div class="price-tag">$59.99</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Final Fantasy VII Rebirth</h3>
+                        <span class="genre-label">Action RPG</span>
+                    </div>
+                </div>
+                
+                <div class="explore-card">
+                    <div class="card-img">
+                        <img src="images/game9.jpg" alt="Game">
+                        <div class="price-tag">$59.99</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Final Fantasy VII Rebirth</h3>
+                        <span class="genre-label">Action RPG</span>
+                    </div>
+                </div>
+                
+                <div class="explore-card">
                     <div class="card-img">
                         <img src="images/game9.jpg" alt="Game">
                         <div class="price-tag">$59.99</div>
