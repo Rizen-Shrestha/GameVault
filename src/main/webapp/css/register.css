@@ -284,3 +284,118 @@
         }
 
         .submit-btn:active { transform: scale(0.99); }
+
+.register-card {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    max-width: 860px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.photo-panel {
+    width: 260px;
+    min-width: 260px;
+    background: rgba(10, 5, 22, 0.6);
+    border-right: 1px solid rgba(150, 70, 220, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 24px;
+    position: relative;
+}
+
+.panel-corners {
+    position: absolute;
+    inset: 12px;
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: rgba(150, 70, 220, 0.5);
+    border-style: solid;
+}
+
+.corner.tl { top: 0; left: 0;  border-width: 2px 0 0 2px; }
+.corner.tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+.corner.bl { bottom: 0; left: 0;  border-width: 0 0 2px 2px; }
+.corner.br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+.photo-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #cc66ff;
+    margin-bottom: 20px;
+}
+
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(150, 70, 220, 0.5);
+    background: rgba(8, 4, 18, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.avatar-preview svg {
+    width: 54px;
+    height: 54px;
+    color: #5a3a88;
+}
+
+.avatar-hint {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: #7a6a99;
+    margin-bottom: 18px;
+}
+
+.upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    border: 1px solid rgba(150, 70, 220, 0.6);
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #cc66ff;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-bottom: 12px;
+}
+
+.upload-btn:hover {
+    background: rgba(150, 60, 240, 0.15);
+    box-shadow: 0 0 12px rgba(160, 70, 255, 0.2);
+}
+
+.upload-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.upload-hint {
+    font-size: 11px;
+    color: #4a3a62;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.form-panel {
+    flex: 1;
+    padding: 36px 40px 38px;
+}

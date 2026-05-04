@@ -15,14 +15,44 @@
         <span class="logo">GAMEVAULT</span>
     </header>
 
-    <main class="page-wrapper">
-        <div class="register-card">
+<main class="page-wrapper">
+    <div class="register-card">
 
+        <div class="photo-panel">
+            <div class="panel-corners">
+                <span class="corner tl"></span>
+                <span class="corner tr"></span>
+                <span class="corner bl"></span>
+                <span class="corner br"></span>
+            </div>
+
+            <p class="photo-label">PROFILE PHOTO</p>
+
+            <div class="avatar-preview" id="avatarPreview">
+                <svg id="avatarPlaceholder" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                </svg>
+                <img id="avatarImg" src="" alt="Preview" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:50%;">
+            </div>
+
+            <p class="avatar-hint">Choose your avatar</p>
+
+            <label for="profileImage" class="upload-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/>
+                </svg>
+                UPLOAD
+            </label>
+
+
+            <p class="upload-hint">JPG or PNG</p>
+        </div>
+
+        <div class="form-panel">
             <h1 class="card-title">CREATE YOUR ACCOUNT</h1>
 
-            <form action="register" method="post" class="register-form">
+            <form action="register" method="post" enctype="multipart/form-data" class="register-form">
 
-                <!-- Row 1: First Name + Last Name -->
                 <div class="form-row">
                     <div class="form-group">
                         <label>FIRST NAME</label>
@@ -114,11 +144,19 @@
                     </label>
                 </div>
 
+					<!-- Put it here because image UI is made outside form which was not working for some reason -->
+				   <input type="file" id="profileImage" name="profileImage"
+                   accept="image/jpeg,image/png"
+                   style="display:none;"
+                   onchange="previewFile()">
+				
                 <button type="submit" class="submit-btn">SUBMIT</button>
 
             </form>
         </div>
-    </main>
+
+    </div>
+</main>
 
     <script>
         function togglePassword() {
@@ -130,6 +168,23 @@
             } else {
                 input.type = 'password';
                 icon.innerHTML = '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+            }
+        }
+        
+        function previewFile() {
+            const preview = document.getElementById('avatarImg');
+            const file = document.querySelector('input[name=profileImage]').files[0];
+            const reader = new FileReader();
+            const placeholder = document.getElementById('avatarPlaceholder');
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+                placeholder.style.display = 'none';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
             }
         }
     </script>

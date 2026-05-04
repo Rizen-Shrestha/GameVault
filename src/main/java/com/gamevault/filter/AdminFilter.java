@@ -19,7 +19,7 @@ import com.gamevault.utils.SessionUtil;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter(urlPatterns = {"/dashboard", "/users", "/games", "/editGame"})
+@WebFilter(urlPatterns = {"/dashboard", "/users", "/games", "/editGame","/addGame"})
 public class AdminFilter extends HttpFilter implements Filter {
        
     /**
