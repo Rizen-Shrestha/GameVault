@@ -48,8 +48,9 @@ public class LoginServlet extends HttpServlet {
 		String status = service.authenticate(username, password);
 		
 		if("Success".equals(status)) {
-			UserDAO user = new UserDAO();
 			try {
+				UserDAO user = new UserDAO();
+
 				UserModel userData = user.getUserByUsername(username);
 				SessionUtil.setAttribute(request, "user", userData, 3600);
 				
@@ -59,6 +60,12 @@ public class LoginServlet extends HttpServlet {
 				
 				CookieUtil.addCookie(response, "last_login", loginTime, 3600);
 				
+				  if ("ADMIN".equalsIgnoreCase(userData.getRole())) {
+	                    response.sendRedirect(request.getContextPath() + "/dashboard");
+	                } else {
+	                    response.sendRedirect(request.getContextPath() + "/home");
+	                    // or "/explore" depending on your design
+	                }				
 			} catch (Exception e) {
 				e.printStackTrace();
 				response.sendRedirect(request.getContextPath() + "/login");
