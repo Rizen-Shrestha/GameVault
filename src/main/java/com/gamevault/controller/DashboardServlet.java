@@ -6,6 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.gamevault.dao.UserDAO;
+import com.gamevault.model.UserModel;
+import com.gamevault.services.UserListService;
 
 /**
  * Servlet implementation class DashboardServlet
@@ -19,9 +24,28 @@ public class DashboardServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("activePage", "home");
-		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp").forward(request, response);
+		UserListService service = new UserListService();
 
+	    try {
+	        List<UserModel> users = service.fetchAll(null);
+	        
+	        int activeCount = 0;
+	        for(UserModel u:users) {
+	        	if("ACTIVE".equalsIgnoreCase(u.getAccountStatus())) {
+	        		activeCount++;
+	        	}
+	        	
+	        }
+	        
+	        request.setAttribute("users", users);
+	        request.setAttribute("activeCount", activeCount);
+	        request.setAttribute("activePage", "home");
+
+	        request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp").forward(request, response);
+
+	    } catch (Exception e) {
+	        throw new ServletException("Error loading dashboard users", e);
+	    }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

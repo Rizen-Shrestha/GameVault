@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.gamevault.dao.UserDAO;
 import com.gamevault.model.UserModel;
+import com.gamevault.services.UserListService;
 /**
  * Servlet implementation class UserListServlet
  */
@@ -28,8 +29,8 @@ public class UserListServlet extends HttpServlet {
 		try {
 			String search = request.getParameter("search");
 			
-			UserDAO user = new UserDAO();
-			List<UserModel> users = user.getAllUsers(search);
+			UserListService service = new UserListService();
+			List<UserModel> users = service.fetchAll(search);
 			
 			request.setAttribute("users", users);
 			request.setAttribute("activePage", "users");
