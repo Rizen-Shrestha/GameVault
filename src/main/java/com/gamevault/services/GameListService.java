@@ -39,7 +39,7 @@ public class GameListService {
                 game.setGameId(rs.getInt("gameId"));
                 game.setTitle(rs.getString("title"));
                 game.setDescription(rs.getString("description"));
-                game.setPrice(rs.getString("price"));
+                game.setPrice(rs.getDouble("price"));
                 game.setReleaseDate(rs.getDate("releaseDate"));
                 game.setCreator(rs.getString("creator"));
 

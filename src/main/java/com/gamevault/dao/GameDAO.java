@@ -13,11 +13,9 @@ import com.gamevault.utils.DBconfig;
 
 public class GameDAO {
 
-    public void insertGame(String title, String description, String price,
-                           String releaseDate, String creator) throws Exception {
+    public void insertGame(String title, String description, double price,
+                           Date releaseDate, String creator) throws Exception {
 
-        LocalDate localDate = LocalDate.parse(releaseDate);
-        Date sqlDate = Date.valueOf(localDate);
 
         Connection con = DBconfig.getConnection();
         if (con == null) {
@@ -31,8 +29,8 @@ public class GameDAO {
 
         pst.setString(1, title);
         pst.setString(2, description);
-        pst.setString(3, price);
-        pst.setDate(4, sqlDate);
+        pst.setDouble(3, price);
+        pst.setDate(4, releaseDate);
         pst.setString(5, creator);
 
         pst.executeUpdate();
@@ -68,7 +66,7 @@ public class GameDAO {
             g.setGameId(rs.getInt("gameId"));
             g.setTitle(rs.getString("title"));
             g.setDescription(rs.getString("description"));
-            g.setPrice(rs.getString("price"));
+            g.setPrice(rs.getDouble("price"));
             g.setReleaseDate(rs.getDate("releaseDate"));
             g.setCreator(rs.getString("creator"));
 
@@ -101,7 +99,7 @@ public class GameDAO {
             game.setGameId(rs.getInt("gameId"));
             game.setTitle(rs.getString("title"));
             game.setDescription(rs.getString("description"));
-            game.setPrice(rs.getString("price"));
+            game.setPrice(rs.getDouble("price"));
             game.setReleaseDate(rs.getDate("releaseDate"));
             game.setCreator(rs.getString("creator"));
         }
@@ -114,10 +112,8 @@ public class GameDAO {
     }
     
     public int updateGame(int gameId, String title, String description,
-            String price, String releaseDate, String creator) throws Exception {
+            double price, Date releaseDate, String creator) throws Exception {
 
-	LocalDate localDate = LocalDate.parse(releaseDate);
-	Date sqlDate = Date.valueOf(localDate);
 	
 	Connection con = DBconfig.getConnection();
 	
@@ -127,8 +123,8 @@ public class GameDAO {
 	
 	pst.setString(1, title);
 	pst.setString(2, description);
-	pst.setString(3, price);
-	pst.setDate(4, sqlDate);
+	pst.setDouble(3, price);
+	pst.setDate(4, releaseDate);
 	pst.setString(5, creator);
 	pst.setInt(6, gameId);
 	

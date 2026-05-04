@@ -7,7 +7,7 @@ public class GameModel {
     private int gameId;
     private String title;
     private String description;
-    private String price;
+    private double price;
     private Date releaseDate;
     private String creator;
 
@@ -20,8 +20,8 @@ public class GameModel {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public String getPrice() { return price; }
-    public void setPrice(String price) { this.price = price; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
     public Date getReleaseDate() { return releaseDate; }
     public void setReleaseDate(Date releaseDate) { this.releaseDate = releaseDate; }

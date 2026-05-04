@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 
 import com.gamevault.dao.GameDAO;
 import com.gamevault.model.GameModel;
@@ -53,8 +54,8 @@ public class EditGameServlet extends HttpServlet {
 	    String gameIdStr = request.getParameter("gameId");
 	    String title = request.getParameter("title");
 	    String description = request.getParameter("description");
-	    String price = request.getParameter("price");
-	    String releaseDate = request.getParameter("releaseDate");
+	    double price = Double.parseDouble(request.getParameter("price"));
+	    Date releaseDate = Date.valueOf(request.getParameter("releaseDate"));
 	    String creator = request.getParameter("creator");
 
 	    try {
