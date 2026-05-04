@@ -61,8 +61,9 @@ public class LoginServlet extends HttpServlet {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+				response.sendRedirect(request.getContextPath() + "/login");
 			}
-			response.sendRedirect(request.getContextPath() + "/home");
+			
 		}
 		else {
 			request.setAttribute("error", status);
