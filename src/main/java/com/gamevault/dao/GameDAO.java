@@ -140,4 +140,21 @@ public class GameDAO {
     return rowsAffected;
 
 	}
+    
+    public int deleteGame(int gameId) throws Exception {
+
+        Connection con = DBconfig.getConnection();
+
+        String sql = "DELETE FROM Games WHERE gameId = ?";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setInt(1, gameId);
+
+        int rowsAffected = pst.executeUpdate();
+
+        pst.close();
+        con.close();
+
+        return rowsAffected;
+    }
 }

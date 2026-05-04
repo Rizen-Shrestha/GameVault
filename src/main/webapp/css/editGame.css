@@ -58,6 +58,11 @@ input:focus, textarea:focus {
     gap: 10px;
 }
 
+.button-group form {
+    margin: 0;
+    flex: 1;
+}
+
 .btn {
     flex: 1;
     text-align: center;
@@ -70,7 +75,6 @@ input:focus, textarea:focus {
     transition: 0.2s;
 }
 
-/* SAVE BUTTON */
 .save-btn {
     background: var(--neon-purple);
     color: black;
@@ -81,11 +85,11 @@ input:focus, textarea:focus {
     background: #c084ff;
 }
 
-/* DELETE BUTTON */
 .delete-btn {
     background: transparent;
     border: 1px solid var(--neon-red);
     color: var(--neon-red);
+    width: 100%;
 }
 
 .delete-btn:hover {

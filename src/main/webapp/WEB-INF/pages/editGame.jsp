@@ -55,17 +55,23 @@
                             Save Changes
                         </button>
 
-                        <!-- DELETE GAME -->
-                        <a href="${pageContext.request.contextPath}/deleteGame?id=${game.gameId}"
-                           class="btn delete-btn"
-                           onclick="return confirm('Are you sure you want to delete this game?');">
-                            Delete
-                        </a>
 
                     </div>
 
                 </form>
-
+                
+                <div class="button-group">
+                <form action="${pageContext.request.contextPath}/deleteGame" method="post"
+				      onsubmit="return confirm('Are you sure you want to delete this game?');">
+				
+				    <input type="hidden" name="id" value="${game.gameId}" />
+				
+				    <button type="submit" class="btn delete-btn">
+				        Delete
+				    </button>
+				
+				</form>
+				</div>
             </div>
 
         </div>

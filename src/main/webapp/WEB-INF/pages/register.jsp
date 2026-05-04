@@ -44,7 +44,6 @@
                     </div>
                 </div>
 
-                <!-- Row 2: Username + Email -->
                 <div class="form-row">
                     <div class="form-group">
                         <label>USERNAME</label>
@@ -66,7 +65,6 @@
                     </div>
                 </div>
 
-                <!-- Row 3: Gender + DOB -->
                 <div class="form-row">
                     <div class="form-group">
                         <label>GENDER</label>
@@ -95,7 +93,6 @@
                     </div>
                 </div>
 
-                <!-- Password -->
                 <div class="form-group">
                     <label>PASSWORD</label>
                     <div class="input-wrapper">
@@ -109,7 +106,6 @@
                     </div>
                 </div>
 
-                <!-- Terms -->
                 <div class="terms-row">
                     <label class="checkbox-label">
                         <input type="checkbox" name="terms" required>

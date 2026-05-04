@@ -64,7 +64,6 @@ public class LoginServlet extends HttpServlet {
 	                    response.sendRedirect(request.getContextPath() + "/dashboard");
 	                } else {
 	                    response.sendRedirect(request.getContextPath() + "/home");
-	                    // or "/explore" depending on your design
 	                }				
 			} catch (Exception e) {
 				e.printStackTrace();
