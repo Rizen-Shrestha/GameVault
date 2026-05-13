@@ -10,6 +10,7 @@ public class GameModel {
     private double price;
     private Date releaseDate;
     private String creator;
+    private String genre;
 
     public int getGameId() { return gameId; }
     public void setGameId(int gameId) { this.gameId = gameId; }
@@ -34,4 +35,13 @@ public class GameModel {
         if (this.title == null) return "default_game";
         return this.title.trim().toLowerCase().replaceAll("[^a-z0-9]", "_");
     }
+    
+
+	public String getGenre() {
+	     return genre;
+	 }
+	
+	public void setGenre(String genre) {
+	     this.genre = genre;
+	 }
 }

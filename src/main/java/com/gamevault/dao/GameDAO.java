@@ -46,9 +46,18 @@ public class GameDAO {
         String sql;
 
         if (search != null && !search.trim().isEmpty()) {
-            sql = "SELECT * FROM Games WHERE title LIKE ? ORDER BY gameId DESC";
+            sql = "SELECT g.*, group_concat(gn.genreName SEPARATOR ', ') as genre "
+            		+ "FROM Games g "
+            		+ "LEFT JOIN game_genres ggn ON g.gameId = ggn.gameId "
+            		+ "LEFT JOIN genres gn ON ggn.genreId = gn.genreId "
+            		+ "WHERE g.title LIKE ? "
+            		+ "GROUP BY g.gameId;";
         } else {
-            sql = "SELECT * FROM Games ORDER BY gameId DESC";
+            sql = "SELECT g.*, group_concat(gn.genreName SEPARATOR ', ') as genre "
+            		+ "FROM Games g "
+            		+ "LEFT JOIN game_genres ggn ON g.gameId = ggn.gameId "
+            		+ "LEFT JOIN genres gn ON ggn.genreId = gn.genreId "
+            		+ "GROUP BY g.gameId;";
         }
 
         Connection con = DBconfig.getConnection();
@@ -102,6 +111,7 @@ public class GameDAO {
             game.setPrice(rs.getDouble("price"));
             game.setReleaseDate(rs.getDate("releaseDate"));
             game.setCreator(rs.getString("creator"));
+            game.setGenre(rs.getString("genre"));
         }
 
         rs.close();
