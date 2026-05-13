@@ -46,9 +46,9 @@ public class GameDAO {
         String sql;
 
         if (search != null && !search.trim().isEmpty()) {
-            sql = "SELECT * FROM Games WHERE title LIKE ?";
+            sql = "SELECT * FROM Games WHERE title LIKE ? ORDER BY gameId DESC";
         } else {
-            sql = "SELECT * FROM Games";
+            sql = "SELECT * FROM Games ORDER BY gameId DESC";
         }
 
         Connection con = DBconfig.getConnection();
