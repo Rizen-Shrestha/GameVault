@@ -28,4 +28,10 @@ public class GameModel {
 
     public String getCreator() { return creator; }
     public void setCreator(String creator) { this.creator = creator; }
+    
+    //Method to standardize image names for all games
+    public String getSafeTitle() {
+        if (this.title == null) return "default_game";
+        return this.title.trim().toLowerCase().replaceAll("[^a-z0-9]", "_");
+    }
 }
