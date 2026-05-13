@@ -6,6 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.gamevault.model.GameModel;
+import com.gamevault.services.GameListService;
 
 /**
  * Servlet implementation class ExploreServlet
@@ -13,7 +17,7 @@ import java.io.IOException;
 @WebServlet(asyncSupported = true, urlPatterns = { "/explore" })
 public class ExploreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private final GameListService gameService = new GameListService();  
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,8 +30,16 @@ public class ExploreServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/explore.jsp").forward(request, response);
+		
+		try {
+			String search = request.getParameter("search");
+			List<GameModel> games = gameService.fetchAll(search);
+			request.setAttribute("games", games);
+	
+			request.getRequestDispatcher("/WEB-INF/pages/explore.jsp").forward(request, response);
+		} catch (Exception e) {
+            throw new ServletException("Database error", e);
+        }
 	}
 
 	/**
