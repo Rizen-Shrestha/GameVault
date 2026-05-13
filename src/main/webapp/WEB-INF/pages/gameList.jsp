@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>GameVault - Games</title>
-
+    
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminSidebar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gameList.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">

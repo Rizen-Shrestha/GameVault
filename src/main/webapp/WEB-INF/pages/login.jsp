@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameVault - Login</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 

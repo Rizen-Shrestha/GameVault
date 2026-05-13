@@ -111,6 +111,7 @@
     border: 1px solid rgba(120, 60, 180, 0.22);
     border-radius: 6px;
     padding: 16px 18px;
+
 }
 
 .card-header {
@@ -134,6 +135,17 @@
     width: 14px;
     height: 14px;
     color: #9980bb;
+}
+
+.manage-users,
+.manage-games {
+    display: flex;
+    flex-direction: column;
+}
+
+.manage-users .user-avatars,
+.manage-games .games-row {
+    flex: 1;
 }
 
 .top-sections {
@@ -199,6 +211,7 @@
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 14px;
 }
 
 .game-card {
@@ -225,7 +238,7 @@
 
 .view-all-btn {
     width: 100%;
-    margin-top: 4px;
+    margin-top: 0;
     padding: 8px 0;
     background: rgba(100, 50, 160, 0.2);
     border: 1px solid rgba(130, 60, 190, 0.35);
@@ -242,14 +255,6 @@
 .view-all-btn:hover {
     background: rgba(140, 70, 210, 0.3);
     color: #cc88ff;
-}
-
-.games-view-btn {
-    width: auto;
-    padding: 8px 14px;
-    margin-top: 0;
-    align-self: center;
-    white-space: nowrap;
 }
 
 .analytics-card {

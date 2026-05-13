@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameVault</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/global.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminSidebar.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminDashboard.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
@@ -57,7 +57,7 @@
                 </div>
 				<div class="user-avatars">
 				
-				        <c:forEach var="user" items="${users}" begin="0" end="2">
+				        <c:forEach var="user" items="${users}" begin="0" end="5">
 				
 				            <div class="user-card">
 				
@@ -81,7 +81,7 @@
 				        </c:forEach>
 				
 				    </div>
-                <a href="${pageContext.request.contextPath}/users">
+                <a href="${pageContext.request.contextPath}/users" style="display: block;">
                 	<button class="view-all-btn">VIEW ALL USERS</button>
                 </a>
             </section>
@@ -106,10 +106,12 @@
                         <div class="game-img"></div>
                         <span class="game-label">GAME ONE</span>
                     </div>
-					<a href="${pageContext.request.contextPath}/games">
-                    <button class="view-all-btn games-view-btn">VIEW ALL GAMES</button>
-                    </a>
+					
                 </div>
+                <div style="flex: 1;"></div>
+                <a href="${pageContext.request.contextPath}/games" style="display: block;">
+                    <button class="view-all-btn">VIEW ALL GAMES</button>
+                </a>
             </section>
 
         </div>
