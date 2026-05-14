@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.util.List;
 
 import com.gamevault.dao.UserDAO;
+import com.gamevault.model.GameModel;
 import com.gamevault.model.UserModel;
+import com.gamevault.services.GameListService;
 import com.gamevault.services.UserListService;
 
 /**
@@ -24,10 +26,12 @@ public class DashboardServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserListService service = new UserListService();
+		UserListService userService = new UserListService();
+		GameListService gameService = new GameListService();
 
 	    try {
-	        List<UserModel> users = service.fetchAll(null);
+	    	// for fetching user data
+	        List<UserModel> users = userService.fetchAll(null);
 	        
 	        int activeCount = 0;
 	        for(UserModel u:users) {
@@ -37,7 +41,11 @@ public class DashboardServlet extends HttpServlet {
 	        	
 	        }
 	        
+	        // for fetching game data
+	        List<GameModel> games = gameService.fetchAll(null);
+	        
 	        request.setAttribute("users", users);
+	        request.setAttribute("games", games);
 	        request.setAttribute("activeCount", activeCount);
 	        request.setAttribute("activePage", "home");
 
