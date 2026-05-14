@@ -48,18 +48,24 @@
 
         <!-- Genres -->
         <section class="genre-discovery">
-            <div class="genre-tags">
-                <button class="tag active">All</button>
-                <button class="tag">Action</button>
-                <button class="tag">Adventure</button>
-                <button class="tag">RPG</button>
-                <button class="tag">Horror</button>
-                <button class="tag">Open World</button>
-                <button class="tag">Multiplayer</button>
-            </div>
-        </section>
-
-        <!-- Browse Collection-->
+		    <div class="genre-tags">
+		        <!-- 'All' Button -->
+		        <form action="explore" method="POST" style="display:inline;">
+		            <button type="submit" class="tag ${empty selectedGenre ? 'active' : ''}">All</button>
+		        </form>
+		        
+		        <!-- Genre Buttons from the list we sent from the Servlet -->
+		        <c:forEach var="gName" items="${genreList}">
+		            <form action="explore" method="POST" style="display:inline;">
+		                <input type="hidden" name="genre" value="${gName}">
+		                <button type="submit" class="tag ${selectedGenre == gName ? 'active' : ''}">
+		                    ${gName}
+		                </button>
+		            </form>
+		        </c:forEach>
+		    </div>
+		</section>
+       <!-- Browse Collection-->
         <section class="discovery-area">
             <h2 class="sub-title">Browse our Collection</h2>
             <c:if test="${empty games}">

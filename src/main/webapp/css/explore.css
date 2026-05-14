@@ -157,7 +157,6 @@
     border-color: var(--neon-green);
     color: white;
     background: rgba(0, 255, 153, 0.1);
-    transform: translateY(-2px);
 }
 
 .explore-grid {
@@ -176,7 +175,6 @@
 }
 
 .explore-card:hover {
-    transform: translateY(-8px);
     border-color: rgba(255, 255, 255, 0.1);
     background: #23232e;
 }

@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import com.gamevault.dao.GameDAO;
 import com.gamevault.model.GameModel;
 import com.gamevault.services.GameListService;
 
@@ -29,18 +30,22 @@ public class ExploreServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try {
-			String search = request.getParameter("search");
-			List<GameModel> games = gameService.fetchAll(search);
-			request.setAttribute("games", games);
-	
-			request.getRequestDispatcher("/WEB-INF/pages/explore.jsp").forward(request, response);
-		} catch (Exception e) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String search = request.getParameter("search");
+        String genre = request.getParameter("genre");
+
+        String[] genreList = {"Action", "Adventure", "RPG", "Horror", "Open World", "Multiplayer"};
+        request.setAttribute("genreList", genreList);
+
+        try {
+            List<GameModel> games = GameDAO.getAllGames(search, genre);
+            request.setAttribute("games", games);
+            
+            request.getRequestDispatcher("/WEB-INF/pages/explore.jsp").forward(request, response);
+        } catch (Exception e) {
             throw new ServletException("Database error", e);
         }
-	}
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
