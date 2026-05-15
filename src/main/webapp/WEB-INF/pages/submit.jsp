@@ -14,12 +14,24 @@
 
     <jsp:include page="../components/sidebar.jsp" />
     
+    <c:if test="${param.success == 'true'}">
+    <div class="success-message">
+        Request submitted successfully.
+    </div>
+	</c:if>
+	
+	<c:if test="${param.error == 'true'}">
+	    <div class="error-message">
+	        Failed to submit request.
+	    </div>
+	</c:if>
+    
     <main class="main">
         <section class="form-container">
             <h1 class="page-title">Submit Game</h1>
             <p class="tagline">Leave your mark on this world.</p>
 
-            <form action="${pageContext.request.contextPath}/submitGame" method="POST" enctype="multipart/form-data" class="submit-form" id="gameForm">
+            <form action="${pageContext.request.contextPath}/submit" method="POST" enctype="multipart/form-data" class="submit-form" id="gameForm">
                 
                 <div class="form-group">
                     <label for="title">Game Title</label>
@@ -31,16 +43,13 @@
                         <label for="price">Price ($)</label>
                         <input type="number" id="price" name="price" step="0.01" placeholder="59.99" required>
                     </div>
-                    <div class="form-group">
-                        <label for="releaseDate">Release Date</label>
-                        <input type="date" id="releaseDate" name="releaseDate" required>
-                    </div>
+
+					<div class="form-group">
+	                    <label for="creator">Creator / Developer</label>
+	                    <input type="text" id="creator" name="creator" placeholder="e.g. CD PROJEKT RED" required>
+                	</div>
                 </div>
 
-                <div class="form-group">
-                    <label for="creator">Creator / Developer</label>
-                    <input type="text" id="creator" name="creator" placeholder="e.g. CD PROJEKT RED" required>
-                </div>
 
                 <!-- Image Upload Section -->
                 <div class="form-group">
