@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <aside class="sidebar">
     <!-- Top Logo -->
     <div class="sidebar-logo">
@@ -8,19 +9,19 @@
     <nav class="sidebar-nav">
         <ul>
             <li class="active">
-                <a href="home.jsp">HOME</a>
+                <a href="${pageContext.request.contextPath}/home">HOME</a>
             </li>
             <li>
-                <a href="library.jsp">LIBRARY</a>
+                <a href="${pageContext.request.contextPath}/library">LIBRARY</a>
             </li>
             <li>
-                <a href="explore.jsp">EXPLORE</a>
+                <a href="${pageContext.request.contextPath}/explore">EXPLORE</a>
             </li>
             <li>
-                <a href="about.jsp">ABOUT US</a>
+                <a href="${pageContext.request.contextPath}/aboutus">ABOUT US</a>
             </li>
             <li>
-                <a href="contact.jsp">CONTACT</a>
+                <a href="${pageContext.request.contextPath}/contact">CONTACT</a>
             </li>
         </ul>
     </nav>
