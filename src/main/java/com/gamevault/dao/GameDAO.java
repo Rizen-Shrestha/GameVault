@@ -14,7 +14,7 @@ import com.gamevault.utils.DBconfig;
 public class GameDAO {
 
     public void insertGame(String title, String description, double price,
-                           Date releaseDate, String creator) throws Exception {
+                           Date dateAdded, String creator) throws Exception {
 
 
         Connection con = DBconfig.getConnection();
@@ -22,7 +22,7 @@ public class GameDAO {
             throw new Exception("Database connection failed! Check DBconfig settings.");
         }
 
-        String sql = "INSERT INTO Games (title, description, price, releaseDate, creator) "
+        String sql = "INSERT INTO Games (title, description, price, dateAdded, creator) "
                    + "VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement pst = con.prepareStatement(sql);
@@ -30,7 +30,7 @@ public class GameDAO {
         pst.setString(1, title);
         pst.setString(2, description);
         pst.setDouble(3, price);
-        pst.setDate(4, releaseDate);
+        pst.setDate(4, dateAdded);
         pst.setString(5, creator);
 
         pst.executeUpdate();
@@ -67,7 +67,7 @@ public class GameDAO {
             g.setTitle(rs.getString("title"));
             g.setDescription(rs.getString("description"));
             g.setPrice(rs.getDouble("price"));
-            g.setReleaseDate(rs.getDate("releaseDate"));
+            g.setDateAdded(rs.getDate("dateAdded"));
             g.setCreator(rs.getString("creator"));
 
             games.add(g);
@@ -100,7 +100,7 @@ public class GameDAO {
             game.setTitle(rs.getString("title"));
             game.setDescription(rs.getString("description"));
             game.setPrice(rs.getDouble("price"));
-            game.setReleaseDate(rs.getDate("releaseDate"));
+            game.setDateAdded(rs.getDate("dateAdded"));
             game.setCreator(rs.getString("creator"));
         }
 
@@ -112,19 +112,19 @@ public class GameDAO {
     }
     
     public int updateGame(int gameId, String title, String description,
-            double price, Date releaseDate, String creator) throws Exception {
+            double price, Date dateAdded, String creator) throws Exception {
 
 	
 	Connection con = DBconfig.getConnection();
 	
-	String sql = "UPDATE Games SET title=?, description=?, price=?, releaseDate=?, creator=? WHERE gameId=?";
+	String sql = "UPDATE Games SET title=?, description=?, price=?, dateAdded=?, creator=? WHERE gameId=?";
 	
 	PreparedStatement pst = con.prepareStatement(sql);
 	
 	pst.setString(1, title);
 	pst.setString(2, description);
 	pst.setDouble(3, price);
-	pst.setDate(4, releaseDate);
+	pst.setDate(4, dateAdded);
 	pst.setString(5, creator);
 	pst.setInt(6, gameId);
 	

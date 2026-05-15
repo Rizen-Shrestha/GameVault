@@ -42,9 +42,9 @@
                     <input type="text" name="price" value="${game.price}" required />
 
                     <label>Release Date</label>
-					<fmt:formatDate value="${game.releaseDate}" pattern="yyyy-MM-dd" var="formattedDate"/>
+					<fmt:formatDate value="${game.dateAdded}" pattern="yyyy-MM-dd" var="formattedDate"/>
 					
-					<input type="date" name="releaseDate" value="${formattedDate}" required />
+					<input type="date" name="dateAdded" value="${formattedDate}" required />
                     <label>Creator</label>
                     <input type="text" name="creator" value="${game.creator}" required />
 

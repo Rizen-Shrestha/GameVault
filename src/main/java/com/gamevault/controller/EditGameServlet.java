@@ -55,7 +55,7 @@ public class EditGameServlet extends HttpServlet {
 	    String title = request.getParameter("title");
 	    String description = request.getParameter("description");
 	    double price = Double.parseDouble(request.getParameter("price"));
-	    Date releaseDate = Date.valueOf(request.getParameter("releaseDate"));
+	    Date dateAdded = Date.valueOf(request.getParameter("dateAdded"));
 	    String creator = request.getParameter("creator");
 
 	    try {
@@ -69,7 +69,7 @@ public class EditGameServlet extends HttpServlet {
 	                title,
 	                description,
 	                price,
-	                releaseDate,
+	                dateAdded,
 	                creator
 	        );
 

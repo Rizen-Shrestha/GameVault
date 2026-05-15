@@ -85,11 +85,11 @@
                                 </td>
 
                                 <td>
-                                    $${game.price}
+                                    ${game.price}
                                 </td>
 
                                 <td>
-                                    <fmt:formatDate value="${game.releaseDate}" pattern="dd MMM, yyyy"/>
+                                    <fmt:formatDate value="${game.dateAdded}" pattern="dd MMM, yyyy"/>
                                 </td>
 
                                 <td>

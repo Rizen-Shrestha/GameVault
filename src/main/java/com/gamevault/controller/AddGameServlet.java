@@ -45,12 +45,12 @@ public class AddGameServlet extends HttpServlet {
             String description = request.getParameter("description");
             double price = Double.parseDouble(request.getParameter("price"));
             String creator = request.getParameter("creator");
-            Date releaseDate = Date.valueOf(java.time.LocalDate.now());
+            Date dateAdded = Date.valueOf(java.time.LocalDate.now());
             
 
             // Call service to add User
             AddGameService service = new AddGameService();
-            service.addGame(title, description, price, releaseDate, creator);
+            service.addGame(title, description, price, dateAdded, creator);
             
             // Redirect to game list after successfull addition
             response.sendRedirect(request.getContextPath() + "/games");
