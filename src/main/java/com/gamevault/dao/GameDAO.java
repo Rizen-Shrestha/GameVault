@@ -41,30 +41,39 @@ public class GameDAO {
 
 
     public List<GameModel> getAllGames(String search) throws Exception {
+        return getAllGames(search, null);
+    }
+    
+    public List<GameModel> getAllGames(String search, String genre) throws Exception {
 
         List<GameModel> games = new ArrayList<>();
-        String sql;
 
-        if (search != null && !search.trim().isEmpty()) {
-            sql = "SELECT g.*, group_concat(gn.genreName SEPARATOR ', ') as genre "
-            		+ "FROM Games g "
-            		+ "LEFT JOIN game_genres ggn ON g.gameId = ggn.gameId "
-            		+ "LEFT JOIN genres gn ON ggn.genreId = gn.genreId "
-            		+ "WHERE g.title LIKE ? "
-            		+ "GROUP BY g.gameId;";
-        } else {
-            sql = "SELECT g.*, group_concat(gn.genreName SEPARATOR ', ') as genre "
-            		+ "FROM Games g "
-            		+ "LEFT JOIN game_genres ggn ON g.gameId = ggn.gameId "
-            		+ "LEFT JOIN genres gn ON ggn.genreId = gn.genreId "
-            		+ "GROUP BY g.gameId;";
-        }
+        StringBuilder sql = new StringBuilder(
+                "SELECT g.*, GROUP_CONCAT(gn.genreName SEPARATOR ', ') as genre " +
+                "FROM Games g " +
+                "LEFT JOIN game_genres ggn ON g.gameId = ggn.gameId " +
+                "LEFT JOIN genres gn ON ggn.genreId = gn.genreId "
+            );
 
+            if (search != null && !search.trim().isEmpty()) {
+                sql.append("WHERE g.title LIKE ? ");
+            }
+
+            sql.append("GROUP BY g.gameId ");
+
+            if (genre != null && !genre.trim().isEmpty()) {
+                sql.append("HAVING genre LIKE ? ");
+            }
+            
         Connection con = DBconfig.getConnection();
-        PreparedStatement pst = con.prepareStatement(sql);
+        PreparedStatement pst = con.prepareStatement(sql.toString());
 
+        int i = 1;
         if (search != null && !search.trim().isEmpty()) {
-            pst.setString(1, "%" + search.trim() + "%");
+            pst.setString(i++, "%" + search.trim() + "%");
+        }
+        if (genre != null && !genre.trim().isEmpty()) {
+            pst.setString(i++, "%" + genre.trim() + "%");
         }
 
         ResultSet rs = pst.executeQuery();
@@ -78,6 +87,7 @@ public class GameDAO {
             g.setPrice(rs.getDouble("price"));
             g.setReleaseDate(rs.getDate("releaseDate"));
             g.setCreator(rs.getString("creator"));
+            g.setGenre(rs.getString("genre"));
 
             games.add(g);
         }

@@ -7,4 +7,7 @@ public class GameListService {
 	public List<GameModel> fetchAll(String search) throws Exception {
         return gameDAO.getAllGames(search);
 	}
+	public List<GameModel> fetchAll(String search, String genre) throws Exception {
+        return gameDAO.getAllGames(search, genre);
+    }
 }
