@@ -93,21 +93,25 @@
                         <span>MANAGE GAMES</span>
                     </div>
                 </div>
-                <div class="games-row">
-                    <div class="game-card">
-                        <div class="game-img"></div>
-                        <span class="game-label">GAME THREE</span>
-                    </div>
-                    <div class="game-card">
-                        <div class="game-img"></div>
-                        <span class="game-label">GAME TWO</span>
-                    </div>
-                    <div class="game-card">
-                        <div class="game-img"></div>
-                        <span class="game-label">GAME ONE</span>
-                    </div>
-					
-                </div>
+                
+				<div class="games-row">
+				
+				    <c:forEach var="game" items="${games}" begin="0" end="5">
+				        <div class="game-card">
+				            <div class="game-img">
+				                <img
+				                    src="${pageContext.request.contextPath}/getgameimage?id=${game.gameId}"
+				                    style="width:100%; height:100%; object-fit:cover;"
+				                    onerror="this.style.display='none'">
+				            </div>
+				
+				            <span class="game-label">
+				                ${game.title}
+				            </span>
+				        </div>
+				    </c:forEach>
+				</div>
+
                 <div style="flex: 1;"></div>
                 <a href="${pageContext.request.contextPath}/games" style="display: block;">
                     <button class="view-all-btn">VIEW ALL GAMES</button>
