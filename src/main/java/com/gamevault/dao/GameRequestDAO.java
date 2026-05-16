@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.gamevault.model.GameRequestModel;
 import com.gamevault.utils.DBconfig;
 
 public class GameRequestDAO {
@@ -39,4 +42,39 @@ public class GameRequestDAO {
 		    
 		    return generatedId;
 		    }
+        
+        public List<GameRequestModel> getAllRequests(String search) throws Exception {
+            List<GameRequestModel> list = new ArrayList<>();
+            String sql;
+            if (search != null && !search.trim().isEmpty()) {
+                sql = "SELECT * FROM game_requests WHERE title LIKE ? ORDER BY requestId DESC";
+            } else {
+                sql = "SELECT * FROM game_requests ORDER BY requestId DESC";
+            }
+            
+            Connection con = DBconfig.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql);
+            
+            if (search != null && !search.trim().isEmpty()) {
+                pst.setString(1, "%" + search.trim() + "%");
+            }
+            
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                GameRequestModel r = new GameRequestModel();
+                r.setRequestId(rs.getInt("requestId"));
+                r.setTitle(rs.getString("title"));
+                r.setCreator(rs.getString("creator"));
+                r.setDescription(rs.getString("description"));
+                r.setPrice(rs.getDouble("price"));
+                r.setRequestStatus(rs.getString("requestStatus"));
+                r.setUserId(rs.getInt("userId"));
+                list.add(r);
+            }
+            
+            rs.close();
+            pst.close();
+            con.close();
+            return list;
+        }
 }

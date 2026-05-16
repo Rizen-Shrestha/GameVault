@@ -32,8 +32,7 @@ public class GameListServlet extends HttpServlet {
             request.setAttribute("games", games);
             request.setAttribute("activePage", "games");
 
-            request.getRequestDispatcher("/WEB-INF/pages/gameList.jsp")
-                   .forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/pages/gameList.jsp").forward(request, response);
 
         } catch (Exception e) {
             throw new ServletException("Database error", e);
