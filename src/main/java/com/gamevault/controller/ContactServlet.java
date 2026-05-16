@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.gamevault.model.UserModel;
+import com.gamevault.services.MessageService;
+
 /**
  * Servlet implementation class ContactServlet
  */
@@ -34,8 +37,26 @@ public class ContactServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
+    	
+    	try {
+            String subject = request.getParameter("subject"); 
+            System.out.println("Subject received: " + subject);
+
+            String message = request.getParameter("message");
+
+            UserModel loggedInUser = (UserModel) request.getSession().getAttribute("user");
+            int userId = loggedInUser.getUserId();
+
+            MessageService service = new MessageService();
+            service.sendMessage(subject, message, userId);
+
+            response.sendRedirect(request.getContextPath() + "/contact?success=true");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", e.getMessage());
+            request.getRequestDispatcher("/WEB-INF/pages/contact.jsp").forward(request, response);
+        }
     }
 
 }

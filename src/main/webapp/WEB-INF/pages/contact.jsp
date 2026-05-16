@@ -1,4 +1,5 @@
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,19 +56,23 @@
 	            <div class="form-card">
 	                <form action="${pageContext.request.contextPath}/contact" method="POST" class="submit-form">
 	                    
-	                    <div class="form-group">
-	                        <label for="name">Full Name</label>
-	                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-	                    </div>
+						<div class="form-group">
+						    <label for="name">Full Name</label>
+						    <input type="text" id="name" name="name" 
+						           value="${sessionScope.user.firstName} ${sessionScope.user.lastName}"
+						           readonly class="readonly-input">
+						</div>
 	
-	                    <div class="form-group">
-	                        <label for="email">Email Address</label>
-	                        <input type="email" id="email" name="email" placeholder="yourname@example.com" required>
-	                    </div>
+						<div class="form-group">
+						    <label for="email">Email Address</label>
+						    <input type="email" id="email" name="email" 
+						           value="${sessionScope.user.email}"
+						           readonly class="readonly-input">
+						</div>
 	
 	                    <div class="form-group">
 	                        <label for="purpose">Purpose of Contact</label>
-	                        <select id="purpose" name="purpose" class="custom-select" required>
+	                        <select id="purpose" name="subject" class="custom-select" required>
 	                            <option value="" disabled selected>Select a reason</option>
 	                            <option value="support">Technical Support</option>
 	                            <option value="feedback">General Feedback</option>

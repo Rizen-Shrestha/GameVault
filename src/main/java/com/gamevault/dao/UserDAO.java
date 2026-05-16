@@ -122,6 +122,7 @@ public class UserDAO {
 			user.setFirstName(rs.getString("firstName"));
 			user.setLastName(rs.getString("lastName"));
 			user.setRole(rs.getString("role"));
+			user.setEmail(rs.getString("email"));
 		}
 		
 		
