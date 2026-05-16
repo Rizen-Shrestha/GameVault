@@ -62,6 +62,7 @@ public class GameRequestDAO {
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 GameRequestModel r = new GameRequestModel();
+                
                 r.setRequestId(rs.getInt("requestId"));
                 r.setTitle(rs.getString("title"));
                 r.setCreator(rs.getString("creator"));
@@ -75,6 +76,73 @@ public class GameRequestDAO {
             rs.close();
             pst.close();
             con.close();
+            return list;
+        }
+        
+        public GameRequestModel getRequestById(int requestId) throws Exception {
+            Connection con = DBconfig.getConnection();
+            String sql = "SELECT * FROM game_requests WHERE requestId = ?";
+            
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, requestId);
+            
+            ResultSet rs = pst.executeQuery();
+            GameRequestModel r = null;
+            
+            if (rs.next()) {
+                r = new GameRequestModel();
+                
+                r.setRequestId(rs.getInt("requestId"));
+                r.setTitle(rs.getString("title"));
+                r.setCreator(rs.getString("creator"));
+                r.setDescription(rs.getString("description"));
+                r.setPrice(rs.getDouble("price"));
+                r.setRequestStatus(rs.getString("requestStatus"));
+                r.setUserId(rs.getInt("userId"));        
+            }
+            
+            rs.close();
+            pst.close();
+            con.close();
+            return r;
+        }
+        
+        public void updateRequestStatus(int requestId, String status) throws Exception {
+            Connection con = DBconfig.getConnection();
+            String sql = "UPDATE game_requests SET requestStatus = ? WHERE requestId = ?";
+            
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, status);
+            pst.setInt(2, requestId);
+            pst.executeUpdate();
+            
+            pst.close();
+            con.close();
+        }
+        
+        public List<GameRequestModel> getPendingRequests(int limit) throws Exception {
+            List<GameRequestModel> list = new ArrayList<>();
+            
+            Connection con = DBconfig.getConnection();
+            String sql = "SELECT * FROM game_requests WHERE requestStatus = 'pending' ORDER BY requestId DESC LIMIT ?";
+            
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, limit);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                GameRequestModel r = new GameRequestModel();
+                r.setRequestId(rs.getInt("requestId"));
+                r.setTitle(rs.getString("title"));
+                r.setRequestStatus(rs.getString("requestStatus"));
+                list.add(r);
+            }
+            
+            rs.close();
+            pst.close();
+            con.close();
+            
             return list;
         }
 }

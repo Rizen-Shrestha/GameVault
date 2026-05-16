@@ -8,8 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import com.gamevault.dao.GameRequestDAO;
 import com.gamevault.dao.UserDAO;
 import com.gamevault.model.GameModel;
+import com.gamevault.model.GameRequestModel;
 import com.gamevault.model.UserModel;
 import com.gamevault.services.GameListService;
 import com.gamevault.services.UserListService;
@@ -28,6 +30,8 @@ public class DashboardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserListService userService = new UserListService();
 		GameListService gameService = new GameListService();
+		GameRequestDAO requestDao = new GameRequestDAO();
+
 
 	    try {
 	    	// for fetching user data
@@ -44,9 +48,14 @@ public class DashboardServlet extends HttpServlet {
 	        // for fetching game data
 	        List<GameModel> games = gameService.fetchAll(null);
 	        
+	        // for fetching pending requests
+			List<GameRequestModel> pendingRequests = requestDao.getPendingRequests(5);
+			
 	        request.setAttribute("users", users);
 	        request.setAttribute("games", games);
 	        request.setAttribute("activeCount", activeCount);
+	        request.setAttribute("pendingRequests", pendingRequests);
+	        
 	        request.setAttribute("activePage", "home");
 
 	        request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp").forward(request, response);

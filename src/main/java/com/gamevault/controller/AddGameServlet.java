@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
+import com.gamevault.dao.GameRequestDAO;
 import com.gamevault.model.GameModel;
+import com.gamevault.model.GameRequestModel;
 import com.gamevault.services.AddGameService;
 import com.gamevault.services.RegisterService;
 
@@ -31,8 +33,23 @@ public class AddGameServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("activePage","games");
-		request.getRequestDispatcher("/WEB-INF/pages/addGame.jsp").forward(request, response);
+	    try {
+	        String requestIdParam = request.getParameter("requestId");
+	        if (requestIdParam != null) {
+	            int requestId = Integer.parseInt(requestIdParam);
+	            
+	            GameRequestDAO dao = new GameRequestDAO();
+	            GameRequestModel gameRequest = dao.getRequestById(requestId);
+	            
+	            request.setAttribute("prefill", gameRequest);
+	        }
+	        request.setAttribute("activePage", "games");
+	        request.getRequestDispatcher("/WEB-INF/pages/addGame.jsp").forward(request, response);
+	        
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        request.getRequestDispatcher("/WEB-INF/pages/addGame.jsp").forward(request, response);
+	    }
 	}
 
 	/**

@@ -47,7 +47,7 @@
                                id="title"
                                name="title"
                                placeholder="e.g. Elden Ring"
-                               value="${param.title}"
+                               value="${not empty prefill ? prefill.title : param.title}"
                                required />
                     </div>
 
@@ -56,7 +56,7 @@
                         <textarea id="description"
                                   name="description"
                                   rows="4"
-                                  placeholder="Enter game description...">${param.description}</textarea>
+                                  placeholder="Enter game description...">${not empty prefill ? prefill.description : param.description}</textarea>
                     </div>
 
                     <div class="form-row">
@@ -68,7 +68,7 @@
                                    placeholder="e.g. 59.99"
                                    step="0.01"
                                    min="0"
-                                   value="${param.price}"
+                                   value="${not empty prefill ? prefill.price : param.price}"
                                    required />
                         </div>
 
@@ -78,7 +78,7 @@
                                    id="creator"
                                    name="creator"
                                    placeholder="e.g. FromSoftware"
-                                   value="${param.creator}"
+                                   value="${not empty prefill ? prefill.creator : param.creator}"
                                    required />
                         </div>
                     </div>

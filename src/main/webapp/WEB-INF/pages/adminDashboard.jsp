@@ -211,41 +211,47 @@
                     </div>
                 </div>
                 <div class="request-list">
-                    <div class="request-item">
-                        <div class="req-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5S14.67 12 15.5 12s1.5.67 1.5 1.5S16.33 15 15.5 15zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 10 18.5 10s1.5.67 1.5 1.5S19.33 12 18.5 12z"/></svg>
-                        </div>
-                        <div class="req-info">
-                            <span class="req-name">GAME NAME</span>
-                            <span class="req-status">AWAITING VERIFICATION</span>
-                        </div>
-                        <div class="req-actions">
-                            <button class="req-btn approve">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            </button>
-                            <button class="req-btn reject">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="request-item">
-                        <div class="req-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                        </div>
-                        <div class="req-info">
-                            <span class="req-name">GAME NAME</span>
-                            <span class="req-status">AWAITING VERIFICATION</span>
-                        </div>
-                        <div class="req-actions">
-                            <button class="req-btn approve">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            </button>
-                            <button class="req-btn reject">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+				    <c:forEach var="req" items="${pendingRequests}">
+				        <div class="request-item">
+				            <div class="req-icon">
+				                <svg viewBox="0 0 24 24" fill="currentColor">
+				                    <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5S14.67 12 15.5 12s1.5.67 1.5 1.5S16.33 15 15.5 15zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 10 18.5 10s1.5.67 1.5 1.5S19.33 12 18.5 12z"/>
+				                </svg>
+				            </div>
+				            <div class="req-info">
+				                <span class="req-name">${req.title}</span>
+				                <span class="req-status">AWAITING VERIFICATION</span>
+				            </div>
+				            <div class="req-actions">
+				                <a href="${pageContext.request.contextPath}/addGame?requestId=${req.requestId}"
+				                   class="req-btn approve">
+				                    <svg viewBox="0 0 24 24" fill="currentColor">
+				                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+				                    </svg>
+				                </a>
+				                <form action="${pageContext.request.contextPath}/rejectRequest" method="post" style="display:inline;">
+				                    <input type="hidden" name="requestId" value="${req.requestId}" />
+				                    <button type="submit" class="req-btn reject">
+				                        <svg viewBox="0 0 24 24" fill="currentColor">
+				                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+				                        </svg>
+				                    </button>
+				                </form>
+				            </div>
+				        </div>
+				    </c:forEach>
+				
+				    <c:if test="${empty pendingRequests}">
+				        <div style="padding: 20px; text-align:center; color: var(--text-gray); font-size: 11px; letter-spacing: 1px;">
+				            NO PENDING REQUESTS
+				        </div>
+				    </c:if>
+				</div>
+				
+				<!-- Add this below the list -->
+				<a href="${pageContext.request.contextPath}/requests" style="display:block; margin-top: 10px;">
+				    <button class="view-all-btn">VIEW ALL REQUESTS</button>
+				</a>
             </section>
 
         </div>
