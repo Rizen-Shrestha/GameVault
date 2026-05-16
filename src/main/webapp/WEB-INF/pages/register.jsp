@@ -1,4 +1,5 @@
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +50,7 @@
 
         <div class="form-panel">
             <h1 class="card-title">CREATE YOUR ACCOUNT</h1>
+
 
             <form action="register" method="post" enctype="multipart/form-data" class="register-form">
 
@@ -135,13 +137,15 @@
                     </div>
                 </div>
 
-                <div class="terms-row">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="terms" required>
-                        <span class="custom-checkbox"></span>
-                        <span class="terms-text">I agree to the Terms of Service</span>
-                    </label>
-                </div>
+			<!-- Error Message Display -->
+			<c:if test="${not empty error}">
+			    <div class="error-banner">
+			        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+			            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+			        </svg>
+			        <span>${error}</span>
+			    </div>
+			</c:if>
 
 					<!-- Put it here because image UI is made outside form which was not working for some reason -->
 				   <input type="file" id="profileImage" name="profileImage"
