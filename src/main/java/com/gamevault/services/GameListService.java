@@ -10,4 +10,16 @@ public class GameListService {
 	public List<GameModel> fetchAll(String search, String genre) throws Exception {
         return gameDAO.getAllGames(search, genre);
     }
+	
+    public List<GameModel> fetchTrending() throws Exception {
+        return gameDAO.getTrendingGames(3);
+    }
+
+    public List<GameModel> fetchNewest() throws Exception {
+        return gameDAO.getNewestGames(3);
+    }
+
+    public List<GameModel> fetchBudgetGames() throws Exception {
+        return gameDAO.getGamesUnderPrice(20.0, 3);
+    }
 }

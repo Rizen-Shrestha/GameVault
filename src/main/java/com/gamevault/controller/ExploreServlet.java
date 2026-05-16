@@ -43,6 +43,10 @@ public class ExploreServlet extends HttpServlet {
             request.setAttribute("games", games);
             request.setAttribute("selectedGenre", genre);
             
+            //Fetch trending games
+            List<GameModel> trendingGames = gameService.fetchTrending();
+            request.setAttribute("trendingGames", trendingGames);
+            
             request.getRequestDispatcher("/WEB-INF/pages/explore.jsp").forward(request, response);
             
         } catch (Exception e) {

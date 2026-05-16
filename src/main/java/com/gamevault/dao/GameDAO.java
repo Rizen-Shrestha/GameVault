@@ -157,6 +157,55 @@ public class GameDAO {
 
 	}
     
+    //Fetching Trending Games (Most sold)
+    public List<GameModel> getTrendingGames(int limit) throws Exception {
+        String sql = "SELECT g.*, COUNT(oi.gameId) as sales_count FROM games g " +
+                     "LEFT JOIN order_items oi ON g.gameId = oi.gameId " +
+                     "GROUP BY g.gameId ORDER BY sales_count DESC LIMIT ?";
+        return queryRun (sql, null, limit);
+    }
+
+    // Fetching Newest Games
+    public List<GameModel> getNewestGames(int limit) throws Exception {
+        String sql = "SELECT g.* FROM games g ORDER BY g.releaseDate DESC LIMIT ?";
+        return queryRun(sql, null, limit);
+    }
+
+    // Fetching Budget Games (Under Certain Price)
+    public List<GameModel> getGamesUnderPrice(double maxPrice, int limit) throws Exception {
+        String sql = "SELECT g.* FROM games g WHERE g.price <= ? LIMIT ?";
+        return queryRun(sql, maxPrice, limit);
+    }
+    
+    private List<GameModel> queryRun(String sql, Double maxPrice, int limit) throws Exception {
+        List<GameModel> games = new ArrayList<>();
+        
+        try (Connection con = DBconfig.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            
+            if (maxPrice != null) {
+                pst.setDouble(1, maxPrice);
+                pst.setInt(1, limit);
+            } else {
+                pst.setInt(1, limit);
+            }
+            
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    GameModel g = new GameModel();
+                    g.setGameId(rs.getInt("gameId"));
+                    g.setTitle(rs.getString("title"));
+                    g.setDescription(rs.getString("description"));
+                    g.setPrice(rs.getDouble("price"));
+                    g.setReleaseDate(rs.getDate("releaseDate"));
+                    g.setCreator(rs.getString("creator"));
+                    games.add(g);
+                }
+            }
+        }
+        return games;
+    }
+    
     public int deleteGame(int gameId) throws Exception {
 
         Connection con = DBconfig.getConnection();

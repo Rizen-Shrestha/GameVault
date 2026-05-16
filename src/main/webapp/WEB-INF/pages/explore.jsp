@@ -23,20 +23,20 @@
         </section>
 
         <!-- Trending Section-->
-        <section class="trending-area">
-            <h2 class="sub-title">Trending Now</h2>
-            <div class="trending-grid">
-                <c:forEach var="game" items="${games}" begin="0" end="2">
-                    <div class="trending-card">
-                        <img src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" alt="${game.title}">
-                        <div class="trending-overlay">
-                            <h3>${game.title}</h3>
-                            <button class="btn-explore">View Details</button>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </section>
+		<section class="trending-area">
+		    <h2 class="sub-title">Trending Now</h2>
+		    <div class="trending-grid">
+		        <c:forEach var="game" items="${trendingGames}">
+		            <div class="trending-card">
+		                <img src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" alt="${game.title}">
+		                <div class="trending-overlay">
+		                    <h3>${game.title}</h3>
+		                    <button class="btn-explore">View Details</button>
+		                </div>
+		            </div>
+		        </c:forEach>
+		    </div>
+		</section>
 
         <!-- Search Bar-->
         <section class="explore-search-container">
