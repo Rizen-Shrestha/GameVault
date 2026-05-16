@@ -31,7 +31,7 @@
 		                <img src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" alt="${game.title}">
 		                <div class="trending-overlay">
 		                    <h3>${game.title}</h3>
-		                    <button class="btn-explore">View Details</button>
+		                    <a href="${pageContext.request.contextPath}/gameDescription?id=${game.gameId}" class="trending-card-link"><button class="btn-explore">View Details</button></a>
 		                </div>
 		            </div>
 		        </c:forEach>
@@ -75,16 +75,18 @@
 			</c:if>
             <div class="explore-grid">
                 <c:forEach var="game" items="${games}">
-                    <div class="explore-card">
-                        <div class="card-img">
-                            <img src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" alt="${game.title}">
-                            <div class="price-tag">$${game.price}</div>
-                        </div>
-                        <div class="card-info">
-                            <h3>${game.title}</h3>
-                            <span class="genre-label">${game.genre}</span>
-                        </div>
-                    </div>
+	                <a href="${pageContext.request.contextPath}/gameDescription?id=${game.gameId}" class="catalog-card-link">
+	                    <div class="explore-card">
+	                        <div class="card-img">
+	                            <img src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" alt="${game.title}">
+	                            <div class="price-tag">$${game.price}</div>
+	                        </div>
+	                        <div class="card-info">
+	                            <h3>${game.title}</h3>
+	                            <span class="genre-label">${game.genre}</span>
+	                        </div>
+	                    </div>
+	                </a>
                 </c:forEach>
             </div>               
         </section>

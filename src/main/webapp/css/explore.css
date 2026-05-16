@@ -261,3 +261,10 @@
     font-weight: 600;
     margin: 0;
 }
+
+.trending-card-link, 
+.catalog-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}

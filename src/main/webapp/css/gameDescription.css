@@ -147,10 +147,10 @@
     box-shadow: 0 0 10px var(--neon-purple-alpha);
 }
 
-.genre-tags {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+.genre-text-display {
+	margin: 10px 0; 
+	color: #aaa; 
+	font-size: 0.95rem;
 }
 
 .tag {

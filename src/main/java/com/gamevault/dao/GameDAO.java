@@ -105,7 +105,12 @@ public class GameDAO {
         GameModel game = null;
 
         Connection con = DBconfig.getConnection();
-        String sql = "SELECT * FROM Games WHERE gameId = ?";
+        String sql = "SELECT g.*, GROUP_CONCAT(gn.genreName SEPARATOR ', ') as genre " +
+                "FROM Games g " +
+                "LEFT JOIN game_genres ggn ON g.gameId = ggn.gameId " +
+                "LEFT JOIN genres gn ON ggn.genreId = gn.genreId " +
+                "WHERE g.gameId = ? " +
+                "GROUP BY g.gameId";
 
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setInt(1, gameId);

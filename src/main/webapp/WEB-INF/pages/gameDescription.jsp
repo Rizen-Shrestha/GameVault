@@ -33,7 +33,7 @@
                 <div class="description-box">
 				    <h1 class="game-main-title">${game.title}</h1>
 				    
-				    <div class="genre-text-display" style="margin: 10px 0; color: #aaa; font-size: 0.95rem;">
+				    <div class="genre-text-display">
 				        <strong>Genre:</strong> ${game.genre}
 				    </div>
 				
