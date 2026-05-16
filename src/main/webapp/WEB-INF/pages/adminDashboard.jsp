@@ -1,5 +1,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,28 +181,39 @@
                     </div>
                 </div>
                 <div class="message-list">
-                    <div class="message-item">
-                        <div class="msg-avatar"></div>
-                        <div class="msg-body">
-                            <div class="msg-top">
-                                <span class="msg-name">USER NAME</span>
-                                <span class="msg-time">24 MIN</span>
-                            </div>
-                            <span class="msg-preview">This is the message</span>
-                        </div>
-                        <span class="msg-unread"></span>
-                    </div>
-                    <div class="message-item">
-                        <div class="msg-avatar"></div>
-                        <div class="msg-body">
-                            <div class="msg-top">
-                                <span class="msg-name">USER NAME</span>
-                                <span class="msg-time">41 MIN</span>
-                            </div>
-                            <span class="msg-preview">This is the message</span>
-                        </div>
-                    </div>
-                </div>
+				    <c:forEach var="msg" items="${recentMessages}">
+				        <div class="message-item">
+				            <div class="msg-avatar">
+							    <img src="${pageContext.request.contextPath}/getimage?name=${msg.username}&folder=profiles"
+							         style="width:100%; height:100%; object-fit:cover; border-radius:50%;"
+							         onerror="this.style.display='none'">
+							</div>
+				            <div class="msg-body">
+				                <div class="msg-top">
+				                    <span class="msg-name">${msg.firstName} ${msg.lastName}</span>
+				                    <span class="msg-time">
+				                        <fmt:formatDate value="${msg.messageDate}" pattern="dd MMM"/>
+				                    </span>
+				                </div>
+				                <span class="msg-preview">
+				                    ${fn:length(msg.message) > 40
+				                        ? fn:substring(msg.message, 0, 40).concat('...')
+				                        : msg.message}
+				                </span>
+				            </div>
+				        </div>
+				    </c:forEach>
+				
+				    <c:if test="${empty recentMessages}">
+				        <div style="padding: 20px; text-align:center; color: var(--text-gray); font-size: 11px; letter-spacing: 1px;">
+				            NO MESSAGES
+				        </div>
+				    </c:if>
+				</div>
+				
+				<a href="${pageContext.request.contextPath}/messages" style="display:block; margin-top: 10px;">
+				    <button class="view-all-btn">VIEW ALL MESSAGES</button>
+				</a>
             </section>
 
             <section class="card requests-card">
