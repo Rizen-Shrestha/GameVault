@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.gamevault.model.GameModel;
+import com.gamevault.services.GameListService;
+
 /**
  * Servlet implementation class GameDescriptionServlet
  */
@@ -25,11 +28,36 @@ public class GameDescriptionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/gameDescription.jsp").forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idParam = request.getParameter("id");
+        
+        if (idParam == null || idParam.trim().isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/explore");
+            return;
+        }
 
+        try {
+            int gameId = Integer.parseInt(idParam);
+            
+            GameListService service = new GameListService();
+            GameModel game = service.fetchGameById(gameId);
+
+            if (game == null) {
+                response.sendRedirect(request.getContextPath() + "/explore");
+                return;
+            }
+
+            request.setAttribute("game", game);
+            
+            request.getRequestDispatcher("/WEB-INF/pages/gameDescription.jsp").forward(request, response);
+            
+        } catch (NumberFormatException e) {
+            response.sendRedirect(request.getContextPath() + "/explore");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ServletException("Error loading game details page context", e);
+        }
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

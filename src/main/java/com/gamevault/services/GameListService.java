@@ -22,4 +22,7 @@ public class GameListService {
     public List<GameModel> fetchBudgetGames() throws Exception {
         return gameDAO.getGamesUnderPrice(20.0, 3);
     }
+    public GameModel fetchGameById(int gameId) throws Exception {
+        return gameDAO.getGameById(gameId);
+    }
 }

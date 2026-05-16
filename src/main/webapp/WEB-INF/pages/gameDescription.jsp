@@ -1,5 +1,7 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,47 +16,40 @@
 
     <jsp:include page="../components/sidebar.jsp" />
     
-    <main class="main">
+<main class="main">
         <div class="details-container">
             
             <section class="details-left">
                 <div class="hero-image-wrapper">
-                    <img id="mainHeroImage" src="images/hero-cp2077-1.jpg" alt="Game Banner">
+                    <img id="mainHeroImage" src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" alt="${game.title}">
                 </div>
 
                 <div class="image-nav">
-                    <img class="thumb active" src="${pageContext.request.contextPath}/images/default_placeholder.png" onclick="switchImage(this)" alt="Thumb 1">
-                    <img class="thumb" src="${pageContext.request.contextPath}/images/default_placeholder.png" onclick="switchImage(this)" alt="Thumb 2">
-                    <img class="thumb" src="${pageContext.request.contextPath}/images/default_placeholder.png" onclick="switchImage(this)" alt="Thumb 3">
+                    <img class="thumb active" src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_1" onclick="switchImage(this)" alt="Thumb 1">
+                    <img class="thumb" src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_2" onclick="switchImage(this)" alt="Thumb 2">
+                    <img class="thumb" src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_3" onclick="switchImage(this)" alt="Thumb 3">
                 </div>
                 
                 <div class="description-box">
-                    <h1 class="game-main-title">Cyberpunk 2077</h1>
-                    
-                    <div class="genre-tags">
-                        <span class="tag">Open World</span>
-                        <span class="tag">RPG</span>
-                        <span class="tag">Action</span>
-                    </div>
-
-                    <p class="game-long-desc">
-                        Cyberpunk 2077 is an open-world, action-adventure story set in Night City, 
-                        a megalopolis obsessed with power, glamour and body modification. You play 
-                        as V, a mercenary outlaw going after a one-of-a-kind implant that is the 
-                        key to immortality.
-                    </p>
-                </div>
+				    <h1 class="game-main-title">${game.title}</h1>
+				    
+				    <div class="genre-text-display" style="margin: 10px 0; color: #aaa; font-size: 0.95rem;">
+				        <strong>Genre:</strong> ${game.genre}
+				    </div>
+				
+				    <p class="game-long-desc">${game.description}</p>
+				</div>
             </section>
 
             <aside class="details-right">
                 <div class="purchase-card">
                     <div class="game-logo-small">
-                        <img src="images/logo-cp2077.png" alt="Logo">
+                        <img src="${pageContext.request.contextPath}/getgameimage?name=${game.getSafeTitle()}_logo" alt="Logo" onerror="this.style.display='none'">
                     </div>
                     
                     <div class="price-display">
                         <span class="currency">$</span>
-                        <span class="amount">59.99</span>
+                        <span class="amount">${game.price}</span>
                     </div>
 
                     <div class="action-buttons">
@@ -65,11 +60,11 @@
                     <div class="meta-info">
                         <div class="meta-row">
                             <span>Developer</span>
-                            <span class="white-text">CD PROJEKT RED</span>
+                            <span class="white-text">${game.creator}</span>
                         </div>
                         <div class="meta-row">
                             <span>Release Date</span>
-                            <span class="white-text">Dec 10, 2020</span>
+                            <span class="white-text">${game.releaseDate}</span>
                         </div>
                     </div>
                 </div>
