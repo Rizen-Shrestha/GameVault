@@ -57,6 +57,17 @@
                     <div class="file-upload-wrapper">
                         <input type="file" id="gameImages" name="gameImages" accept="image/*" multiple required>
                         <p class="file-hint">Select 3 images (JPG/PNG) to be used for the hero and thumbnails.</p>
+                        <div class="image-preview-container" id="previewContainer">
+						    <div class="preview-slot" id="slot1">
+						        <span>Image 1</span>
+						    </div>
+						    <div class="preview-slot" id="slot2">
+						        <span>Image 2</span>
+						    </div>
+						    <div class="preview-slot" id="slot3">
+						        <span>Image 3</span>
+						    </div>
+						</div>
                     </div>
                 </div>
 
@@ -83,6 +94,26 @@
                 alert("Please select exactly 3 images.");
             }
         };
+        
+        document.getElementById('gameImages').addEventListener('change', function() {
+            const files = this.files;
+            const slots = document.querySelectorAll('.preview-slot');
+
+            // Clear all slots first
+            slots.forEach(slot => {
+                slot.innerHTML = '<span>' + slot.id.replace('slot', 'Image ') + '</span>';
+            });
+
+            // Fill slots with previews
+            for (let i = 0; i < Math.min(files.length, 3); i++) {
+                const reader = new FileReader();
+                const slot = slots[i];
+                reader.onload = function(e) {
+                    slot.innerHTML = '<img src="' + e.target.result + '">';
+                };
+                reader.readAsDataURL(files[i]);
+            }
+        });
     </script>
 
 </body>
