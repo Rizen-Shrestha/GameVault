@@ -76,26 +76,40 @@
                                             ${req.requestStatus}
                                         </span>
                                     </td>
-                                    <td style="text-align:center;">
-                                        <div class="action-btns">
-                                            <!-- Accept: go to addGame pre-filled -->
-                                            <a href="${pageContext.request.contextPath}/addGame?requestId=${req.requestId}"
-                                               class="req-btn approve" title="Accept">
-                                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                                                </svg>
-                                            </a>
-                                            <!-- Reject: post to reject servlet -->
-                                            <form action="${pageContext.request.contextPath}/rejectRequest" method="post" style="display:inline;">
-                                                <input type="hidden" name="requestId" value="${req.requestId}" />
-                                                <button type="submit" class="req-btn reject" title="Reject">
-                                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
+									<td style="text-align:center;">
+									    <div class="action-btns">
+									        <c:choose>
+									            <c:when test="${req.requestStatus == 'pending'}">
+									                <a href="${pageContext.request.contextPath}/addGame?requestId=${req.requestId}"
+									                   class="req-btn approve" title="Accept">
+									                    <svg viewBox="0 0 24 24" fill="currentColor">
+									                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+									                    </svg>
+									                </a>
+									                <form action="${pageContext.request.contextPath}/rejectRequest"
+									                      method="post" style="display:inline;">
+									                    <input type="hidden" name="requestId" value="${req.requestId}" />
+									                    <button type="submit" class="req-btn reject" title="Reject">
+									                        <svg viewBox="0 0 24 24" fill="currentColor">
+									                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+									                        </svg>
+									                    </button>
+									                </form>
+									            </c:when>
+									            <c:otherwise>
+									                <form action="${pageContext.request.contextPath}/deleteRequest"
+									                      method="post" style="display:inline;">
+									                    <input type="hidden" name="requestId" value="${req.requestId}" />
+									                    <button type="submit" class="req-btn delete" title="Delete">
+									                        <svg viewBox="0 0 24 24" fill="currentColor">
+									                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+									                        </svg>
+									                    </button>
+									                </form>
+									            </c:otherwise>
+									        </c:choose>
+									    </div>
+									</td>
                                 </tr>
                             </c:forEach>
                         </tbody>

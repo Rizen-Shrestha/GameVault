@@ -120,6 +120,18 @@ public class GameRequestDAO {
             con.close();
         }
         
+        public void deleteRequest(int requestId) throws Exception {
+            Connection con = DBconfig.getConnection();
+            String sql = "DELETE FROM game_requests WHERE requestId = ?";
+            
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, requestId);
+            pst.executeUpdate();
+            
+            pst.close();
+            con.close();
+        }
+        
         public List<GameRequestModel> getPendingRequests(int limit) throws Exception {
             List<GameRequestModel> list = new ArrayList<>();
             

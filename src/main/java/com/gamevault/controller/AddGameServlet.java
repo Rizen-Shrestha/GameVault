@@ -69,6 +69,16 @@ public class AddGameServlet extends HttpServlet {
             AddGameService service = new AddGameService();
             service.addGame(title, description, price, dateAdded, creator);
             
+            // For addition of a game when form is opened from game request
+            String requestIdParam = request.getParameter("requestId");
+            
+            if (requestIdParam != null && !requestIdParam.isEmpty()) {
+                int requestId = Integer.parseInt(requestIdParam);
+                
+                GameRequestDAO dao = new GameRequestDAO();
+                dao.updateRequestStatus(requestId, "accepted");
+            }
+            
             // Redirect to game list after successfull addition
             response.sendRedirect(request.getContextPath() + "/games");
             

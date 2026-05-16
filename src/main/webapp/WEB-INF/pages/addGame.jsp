@@ -40,7 +40,11 @@
                 </c:if>
 
                 <form action="${pageContext.request.contextPath}/addGame" method="post">
-
+                
+				<c:if test="${not empty prefill}">
+				    <input type="hidden" name="requestId" value="${prefill.requestId}" />
+				</c:if>
+				
                     <div class="form-group">
                         <label for="title">GAME TITLE</label>
                         <input type="text"
