@@ -74,8 +74,11 @@
 }
 
 .msg-preview {
-	color: var(--text-gray);
-	font-size: 12px;
+    color: var(--text-gray);
+    font-size: 12px;
+    white-space: normal;
+    word-break: break-word;
+    display: block;
 }
 
 .req-btn {

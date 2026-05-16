@@ -32,28 +32,27 @@ public class MessageDAO {
 
     public List<MessageModel> getAllMessages() throws Exception {
         List<MessageModel> list = new ArrayList<>();
-        
         Connection con = DBconfig.getConnection();
-        String sql = "SELECT * FROM messages ORDER BY messageDate DESC";
-        
+        String sql = "SELECT m.*, u.firstName, u.lastName, u.username " +
+                     "FROM messages m LEFT JOIN users u ON m.userId = u.userId " +
+                     "ORDER BY m.messageDate DESC";
         PreparedStatement pst = con.prepareStatement(sql);
-        
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
             MessageModel m = new MessageModel();
-            
             m.setMessageId(rs.getInt("messageId"));
             m.setSubject(rs.getString("subject"));
             m.setMessage(rs.getString("message"));
             m.setMessageDate(rs.getDate("messageDate"));
             m.setUserId(rs.getInt("userId"));
-            
+            m.setFirstName(rs.getString("firstName"));
+            m.setLastName(rs.getString("lastName"));
+            m.setUsername(rs.getString("username"));
             list.add(m);
         }
         rs.close();
         pst.close();
         con.close();
-        
         return list;
     }
 
@@ -71,15 +70,13 @@ public class MessageDAO {
     
     public List<MessageModel> getRecentMessages(int limit) throws Exception {
         List<MessageModel> list = new ArrayList<>();
-        
         Connection con = DBconfig.getConnection();
-        String sql = "SELECT * FROM messages ORDER BY messageDate DESC LIMIT ?";
-        
+        String sql = "SELECT m.*, u.firstName, u.lastName, u.username " +
+                     "FROM messages m JOIN users u ON m.userId = u.userId " +
+                     "ORDER BY m.messageDate DESC LIMIT ?";
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setInt(1, limit);
-        
         ResultSet rs = pst.executeQuery();
-        
         while (rs.next()) {
             MessageModel m = new MessageModel();
             m.setMessageId(rs.getInt("messageId"));
@@ -87,13 +84,14 @@ public class MessageDAO {
             m.setMessage(rs.getString("message"));
             m.setMessageDate(rs.getDate("messageDate"));
             m.setUserId(rs.getInt("userId"));
-            
+            m.setFirstName(rs.getString("firstName"));
+            m.setLastName(rs.getString("lastName"));
+            m.setUsername(rs.getString("username"));
             list.add(m);
         }
         rs.close();
         pst.close();
         con.close();
-        
         return list;
     }
 }

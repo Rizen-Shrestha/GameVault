@@ -36,44 +36,42 @@
                 </c:when>
                 <c:otherwise>
                     <table class="message-table">
-                        <thead>
-                            <tr>
-                                <th>USER ID</th>
-                                <th>SUBJECT</th>
-                                <th>MESSAGE</th>
-                                <th>DATE</th>
-                                <th style="text-align:center;">ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="msg" items="${messages}">
-                                <tr class="message-row">
-                                    <td>${msg.userId}</td>
-                                    <td><span class="msg-subject">${msg.subject}</span></td>
-                                    <td>
-                                        <span class="msg-preview">
-                                            ${fn:length(msg.message) > 60
-                                                ? fn:substring(msg.message, 0, 60).concat('...')
-                                                : msg.message}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <fmt:formatDate value="${msg.messageDate}" pattern="dd MMM, yyyy"/>
-                                    </td>
-                                    <td style="text-align:center;">
-                                        <form action="${pageContext.request.contextPath}/deleteMessage"
-                                              method="post" style="display:inline;">
-                                            <input type="hidden" name="messageId" value="${msg.messageId}" />
-                                            <button type="submit" class="req-btn delete" title="Delete">
-                                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
-                                                </svg>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
+					<thead>
+					    <tr>
+					        <th>ID</th>
+					        <th>FULL NAME</th>
+					        <th>SUBJECT</th>
+					        <th>MESSAGE</th>
+					        <th>DATE</th>
+					        <th style="text-align:center;">ACTIONS</th>
+					    </tr>
+					</thead>
+					<tbody>
+					    <c:forEach var="msg" items="${messages}">
+					        <tr class="message-row">
+					            <td>${msg.messageId}</td>
+					            <td><span class="msg-subject">${msg.firstName} ${msg.lastName}</span></td>
+					            <td>${msg.subject}</td>
+								<td>
+								    <span class="msg-preview">${msg.message}</span>
+								</td>
+					            <td>
+					                <fmt:formatDate value="${msg.messageDate}" pattern="dd MMM, yyyy"/>
+					            </td>
+					            <td style="text-align:center;">
+					                <form action="${pageContext.request.contextPath}/deleteMessage"
+					                      method="post" style="display:inline;">
+					                    <input type="hidden" name="messageId" value="${msg.messageId}" />
+					                    <button type="submit" class="req-btn delete" title="Delete">
+					                        <svg viewBox="0 0 24 24" fill="currentColor">
+					                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+					                        </svg>
+					                    </button>
+					                </form>
+					            </td>
+					        </tr>
+					    </c:forEach>
+					</tbody>
                     </table>
                 </c:otherwise>
             </c:choose>

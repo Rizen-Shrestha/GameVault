@@ -12,7 +12,7 @@ import com.gamevault.dao.MessageDAO;
 /**
  * Servlet implementation class DeleteMessageServlet
  */
-@WebServlet("/DeleteMessageServlet")
+@WebServlet("/deleteMessage")
 public class DeleteMessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
